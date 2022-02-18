@@ -10,5 +10,7 @@ namespace Chunya5.Data
 
         }
 
+        public DbSet<Bonds> Bonds { get; set; }
+
     }
 }

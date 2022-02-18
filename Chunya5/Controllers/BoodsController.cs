@@ -1,13 +1,32 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Chunya5.Data;
+using Chunya5.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chunya5.Controllers
 {
     public class BoodsController : Controller
     {
+        private readonly MyDbContext myDbContext;
+
+        public BoodsController(MyDbContext myDbContext)
+        {
+            this.myDbContext = myDbContext ?? throw new ArgumentNullException(nameof(myDbContext));
+        }
         // GET: BoodsController
         public ActionResult Index()
         {
+            myDbContext.Bonds.Add(new Bonds()
+            {
+                BondsCode = "hhh",
+                BondsName="123",
+                CNBD="china",
+                ParValue= 100m,
+                Rate = 0.01,
+                IsDel= false
+
+            });
+            myDbContext.SaveChanges();
             return View();
         }
 
