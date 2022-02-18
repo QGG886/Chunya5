@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Chunya5.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Chunya5.Data
 {
@@ -8,5 +9,6 @@ namespace Chunya5.Data
         {
 
         }
+
     }
 }

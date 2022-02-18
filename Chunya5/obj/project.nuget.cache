@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9EIte+Z81s2N7eRIHQglwb3ziNDdkJevsiAa+WE1g+ic325fqwwK4oSvOj+xBqkz6XXlROyUGj9GmxKFrfWtzA==",
+  "dgSpecHash": "IAMjjrAfCV1gwlaFsDDt8uzpBDLQzE5BrSdqwFk974TVumpUxAEH/Bmwv+/HVlt1xUc89+lIHGvnVi4Kxg05LQ==",
   "success": true,
-  "projectFilePath": "E:\\Practice\\C#\\Chunya5\\Chunya5\\Chunya5.csproj",
+  "projectFilePath": "E:\\Work\\Chunya5\\Chunya5\\Chunya5.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zeq88\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\zeq88\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.2\\microsoft.entityframeworkcore.6.0.2.nupkg.sha512",
