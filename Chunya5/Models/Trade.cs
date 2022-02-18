@@ -3,12 +3,12 @@
     public class Trade
     {
         public int Id { get; set; }
-        public string Account { get; set; }
+        public string Account { get; set; } = "";
         public int BondsCode { get; set; }
         //public Bonds Bonds { get; set; }
         public DateTime TradeDate { get; set; }
         //交易方向（买或卖）
-        public string Direction { get; set; }
+        public string Direction { get; set; } = "";
         //交易面额
         public decimal Deno { get; set; }
         //净价
