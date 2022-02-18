@@ -748,11 +748,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Practice\\C#\\Chunya5\\Chunya5\\Chunya5.csproj",
+      "projectUniqueName": "E:\\Work\\Chunya5\\Chunya5\\Chunya5.csproj",
       "projectName": "Chunya5",
-      "projectPath": "E:\\Practice\\C#\\Chunya5\\Chunya5\\Chunya5.csproj",
+      "projectPath": "E:\\Work\\Chunya5\\Chunya5\\Chunya5.csproj",
       "packagesPath": "C:\\Users\\zeq88\\.nuget\\packages\\",
-      "outputPath": "E:\\Practice\\C#\\Chunya5\\Chunya5\\obj\\",
+      "outputPath": "E:\\Work\\Chunya5\\Chunya5\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\zeq88\\AppData\\Roaming\\NuGet\\NuGet.Config",
