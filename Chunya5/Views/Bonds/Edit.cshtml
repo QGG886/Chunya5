@@ -1,0 +1,96 @@
+﻿@model Chunya5.Models.Bonds
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Bonds</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="BondsCode" class="control-label"></label>
+                <input asp-for="BondsCode" class="form-control" />
+                <span asp-validation-for="BondsCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BondsName" class="control-label"></label>
+                <input asp-for="BondsName" class="form-control" />
+                <span asp-validation-for="BondsName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Market" class="control-label"></label>
+                <input asp-for="Market" class="form-control" />
+                <span asp-validation-for="Market" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ParValue" class="control-label"></label>
+                <input asp-for="ParValue" class="form-control" />
+                <span asp-validation-for="ParValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rate" class="control-label"></label>
+                <input asp-for="Rate" class="form-control" />
+                <span asp-validation-for="Rate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsDel" /> @Html.DisplayNameFor(model => model.IsDel)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddTime" class="control-label"></label>
+                <input asp-for="AddTime" class="form-control" />
+                <span asp-validation-for="AddTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdateTime" class="control-label"></label>
+                <input asp-for="UpdateTime" class="form-control" />
+                <span asp-validation-for="UpdateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddMan" class="control-label"></label>
+                <input asp-for="AddMan" class="form-control" />
+                <span asp-validation-for="AddMan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModifyMan" class="control-label"></label>
+                <input asp-for="ModifyMan" class="form-control" />
+                <span asp-validation-for="ModifyMan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Term" class="control-label"></label>
+                <input asp-for="Term" class="form-control" />
+                <span asp-validation-for="Term" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Frequency" class="control-label"></label>
+                <select asp-for="Frequency" class="form-control"></select>
+                <span asp-validation-for="Frequency" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
