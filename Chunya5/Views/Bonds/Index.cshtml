@@ -12,19 +12,15 @@
 <form asp-action="index" asp-route-page=1>
     <div class="input-group mb-3" style="width:500px">
         <input type="text" class="form-control" placeholder="请输入债券编码查询" name="bondsCode">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" style="border-radius:0 2px 2px 0" type="submit">搜索</button>
-        </div>
-    </div>
-</form>
-<form asp-action="index" asp-route-page=1>
-    <div class="input-group mb-3" style="width:500px">
+        &nbsp;&nbsp;&nbsp;&nbsp;
         <input type="text" class="form-control" placeholder="请输入债券名称查询" name="bondsName">
+        &nbsp;&nbsp;&nbsp;&nbsp;
         <div class="input-group-append">
             <button class="btn btn-outline-secondary" style="border-radius:0 2px 2px 0" type="submit">搜索</button>
         </div>
     </div>
 </form>
+
 <table class="table">
     <thead>
         <tr>
@@ -104,7 +100,9 @@
 </table>
 <nav style="float:right;">
     <ul class="pagination">
-        <li class="page-item">
+       @if (Model.HasPrevious)
+       {
+            <li class="page-item">
             <a class="page-link"
                asp-action="index"
                asp-route-page=@(Model.CurrentPage-1)
@@ -113,6 +111,7 @@
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
+       }
         @for (var i = 0; i < Model.TotalPages; i++)
         {
             <li class="page-item">
@@ -123,7 +122,9 @@
                asp-route-bondsName=@ViewBag.bondsName>@(i+1)</a>
             </li>
         }
-        <li class="page-item">
+        @if (Model.HasNext)
+        {
+            <li class="page-item">
             <a class="page-link"
                asp-action="index"
                asp-route-page=@(Model.CurrentPage+1)
@@ -132,5 +133,6 @@
                 <span aria-hidden="true">&raquo;</span>
             </a>
         </li>
+        }
     </ul>
 </nav>

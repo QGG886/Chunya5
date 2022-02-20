@@ -1,0 +1,110 @@
+﻿@model Chunya5.Models.Position
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Position</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AddTime" class="control-label"></label>
+                <input asp-for="AddTime" class="form-control" />
+                <span asp-validation-for="AddTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdateTime" class="control-label"></label>
+                <input asp-for="UpdateTime" class="form-control" />
+                <span asp-validation-for="UpdateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddMan" class="control-label"></label>
+                <input asp-for="AddMan" class="form-control" />
+                <span asp-validation-for="AddMan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModifyMan" class="control-label"></label>
+                <input asp-for="ModifyMan" class="form-control" />
+                <span asp-validation-for="ModifyMan" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsDeleteete" /> @Html.DisplayNameFor(model => model.IsDeleteete)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Accout" class="control-label"></label>
+                <input asp-for="Accout" class="form-control" />
+                <span asp-validation-for="Accout" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BondsCode" class="control-label"></label>
+                <input asp-for="BondsCode" class="form-control" />
+                <span asp-validation-for="BondsCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TradeDate" class="control-label"></label>
+                <input asp-for="TradeDate" class="form-control" />
+                <span asp-validation-for="TradeDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NetCost" class="control-label"></label>
+                <input asp-for="NetCost" class="form-control" />
+                <span asp-validation-for="NetCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InterestCost" class="control-label"></label>
+                <input asp-for="InterestCost" class="form-control" />
+                <span asp-validation-for="InterestCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccInterest" class="control-label"></label>
+                <input asp-for="AccInterest" class="form-control" />
+                <span asp-validation-for="AccInterest" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccUninterestImcome" class="control-label"></label>
+                <input asp-for="AccUninterestImcome" class="form-control" />
+                <span asp-validation-for="AccUninterestImcome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RealizedInterestIncome" class="control-label"></label>
+                <input asp-for="RealizedInterestIncome" class="form-control" />
+                <span asp-validation-for="RealizedInterestIncome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalInterestIncome" class="control-label"></label>
+                <input asp-for="TotalInterestIncome" class="form-control" />
+                <span asp-validation-for="TotalInterestIncome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TradingProloss" class="control-label"></label>
+                <input asp-for="TradingProloss" class="form-control" />
+                <span asp-validation-for="TradingProloss" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FloatingPl" class="control-label"></label>
+                <input asp-for="FloatingPl" class="form-control" />
+                <span asp-validation-for="FloatingPl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DenominattonHeld" class="control-label"></label>
+                <input asp-for="DenominattonHeld" class="form-control" />
+                <span asp-validation-for="DenominattonHeld" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

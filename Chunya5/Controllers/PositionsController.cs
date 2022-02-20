@@ -8,41 +8,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Chunya5.Data;
 using Chunya5.Models;
-using Chunya5.Helper;
 
 namespace Chunya5.Controllers
 {
-    public class TradesController : Controller
+    public class PositionsController : Controller
     {
         private readonly MyDbContext _context;
 
-        public TradesController(MyDbContext context)
+        public PositionsController(MyDbContext context)
         {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _context = context;
         }
 
-        // GET: Trades
-        public async Task<IActionResult> Index(string? tradeAccount, DateTime tradeDate, int page)
+        // GET: Positions
+        public async Task<IActionResult> Index()
         {
-            var pageSize = 5;
-            var trades = _context.Trade.Where(x=>x.IsDelete == false) as IQueryable<Trade>;
-
-            if (!String.IsNullOrEmpty(tradeAccount))
-            {
-                trades = trades.Where(x=>x.Account.Contains(tradeAccount));
-            }
-            if(tradeDate.Year != 1)
-            trades = trades.Where(x => x.TradeDate.Year == tradeDate.Year && x.TradeDate.Month == tradeDate.Month && x.TradeDate.Day == tradeDate.Day);
-            
-
-            if (page == 0) page = 1;
-
-            trades.OrderBy(x => x.TradeDate);
-
-            return View(await PageList<Trade>.CreatPageListAsync(trades, page, pageSize));
+            return View(await _context.Positions.ToListAsync());
         }
 
-        // GET: Trades/Details/5
+        // GET: Positions/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -50,39 +34,39 @@ namespace Chunya5.Controllers
                 return NotFound();
             }
 
-            var trade = await _context.Trade
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (trade == null)
+            var position = await _context.Positions
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (position == null)
             {
                 return NotFound();
             }
 
-            return View(trade);
+            return View(position);
         }
 
-        // GET: Trades/Create
+        // GET: Positions/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Trades/Create
+        // POST: Positions/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Account,BondsCode,TradeDate,Direction,Deno,NetPrace,Accrued,Amount")] Trade trade)
+        public async Task<IActionResult> Create([Bind("ID,AddTime,UpdateTime,AddMan,ModifyMan,IsDeleteete,Accout,BondsCode,TradeDate,NetCost,InterestCost,AccInterest,AccUninterestImcome,RealizedInterestIncome,TotalInterestIncome,TradingProloss,FloatingPl,DenominattonHeld")] Position position)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(trade);
+                _context.Add(position);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(trade);
+            return View(position);
         }
 
-        // GET: Trades/Edit/5
+        // GET: Positions/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -90,22 +74,22 @@ namespace Chunya5.Controllers
                 return NotFound();
             }
 
-            var trade = await _context.Trade.FindAsync(id);
-            if (trade == null)
+            var position = await _context.Positions.FindAsync(id);
+            if (position == null)
             {
                 return NotFound();
             }
-            return View(trade);
+            return View(position);
         }
 
-        // POST: Trades/Edit/5
+        // POST: Positions/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id,  Trade trade)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,AddTime,UpdateTime,AddMan,ModifyMan,IsDeleteete,Accout,BondsCode,TradeDate,NetCost,InterestCost,AccInterest,AccUninterestImcome,RealizedInterestIncome,TotalInterestIncome,TradingProloss,FloatingPl,DenominattonHeld")] Position position)
         {
-            if (id != trade.Id)
+            if (id != position.ID)
             {
                 return NotFound();
             }
@@ -114,12 +98,12 @@ namespace Chunya5.Controllers
             {
                 try
                 {
-                    _context.Update(trade);
+                    _context.Update(position);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TradeExists(trade.Id))
+                    if (!PositionExists(position.ID))
                     {
                         return NotFound();
                     }
@@ -130,10 +114,10 @@ namespace Chunya5.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(trade);
+            return View(position);
         }
 
-        // GET: Trades/Delete/5
+        // GET: Positions/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -141,53 +125,30 @@ namespace Chunya5.Controllers
                 return NotFound();
             }
 
-            var trade = await _context.Trade
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (trade == null)
+            var position = await _context.Positions
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (position == null)
             {
                 return NotFound();
             }
 
-            return View(trade);
+            return View(position);
         }
 
-        // POST: Trades/Delete/5
+        // POST: Positions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var trade = await _context.Trade.FindAsync(id);
-            _context.Trade.Remove(trade);
+            var position = await _context.Positions.FindAsync(id);
+            _context.Positions.Remove(position);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TradeExists(int id)
+        private bool PositionExists(int id)
         {
-            return _context.Trade.Any(e => e.Id == id);
-        }
-
-        public JsonResult CheckBonds(string bondsCode)
-        {
-
-            var result = _context.Bonds.Any(x => x.BondsCode == bondsCode);
-
-            return Json(!result);
-
-        }
-
-        public decimal CalculateInterest()
-        {
-            //计算日
-            //起息日
-            //期限
-            //交易面额
-            //利率
-
-            //上一个付息日
-
-
-            return 0;
+            return _context.Positions.Any(e => e.ID == id);
         }
     }
 }

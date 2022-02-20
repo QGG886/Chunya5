@@ -107,10 +107,11 @@
 
         if(startTimeValue != null && termValue != null)
         {
-             let startTime = new Date(startTimeValue);
-             startTime.setFullYear(startTime.getFullYear()*1+termValue*1,startTime.getMonth(),startTime.getDay())
+            let startTime = new Date(startTimeValue);
 
-             endTime.value =startTime.Format("yyyy-MM-dd");
+            startTime.setFullYear(startTime.getFullYear()*1+termValue*1,startTime.getMonth(),startTime.getDate())
+
+            endTime.value =startTime.Format("yyyy-MM-dd");
         }
 
     }

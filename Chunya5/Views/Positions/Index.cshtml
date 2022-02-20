@@ -1,0 +1,131 @@
+﻿@model IEnumerable<Chunya5.Models.Position>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AddTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddMan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifyMan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleteete)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Accout)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BondsCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TradeDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NetCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InterestCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccInterest)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccUninterestImcome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RealizedInterestIncome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalInterestIncome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TradingProloss)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FloatingPl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DenominattonHeld)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddMan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifyMan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleteete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Accout)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BondsCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TradeDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NetCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InterestCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccInterest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccUninterestImcome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RealizedInterestIncome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalInterestIncome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TradingProloss)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FloatingPl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DenominattonHeld)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

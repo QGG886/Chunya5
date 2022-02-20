@@ -1,0 +1,15 @@
+E:\Work\Chunya5\Clearn\bin\Debug\net6.0-windows\Clearn.exe
+E:\Work\Chunya5\Clearn\bin\Debug\net6.0-windows\Clearn.deps.json
+E:\Work\Chunya5\Clearn\bin\Debug\net6.0-windows\Clearn.runtimeconfig.json
+E:\Work\Chunya5\Clearn\bin\Debug\net6.0-windows\Clearn.dll
+E:\Work\Chunya5\Clearn\bin\Debug\net6.0-windows\ref\Clearn.dll
+E:\Work\Chunya5\Clearn\bin\Debug\net6.0-windows\Clearn.pdb
+E:\Work\Chunya5\Clearn\obj\Debug\net6.0-windows\Clearn.csproj.AssemblyReference.cache
+E:\Work\Chunya5\Clearn\obj\Debug\net6.0-windows\Clearn.GeneratedMSBuildEditorConfig.editorconfig
+E:\Work\Chunya5\Clearn\obj\Debug\net6.0-windows\Clearn.AssemblyInfoInputs.cache
+E:\Work\Chunya5\Clearn\obj\Debug\net6.0-windows\Clearn.AssemblyInfo.cs
+E:\Work\Chunya5\Clearn\obj\Debug\net6.0-windows\Clearn.csproj.CoreCompileInputs.cache
+E:\Work\Chunya5\Clearn\obj\Debug\net6.0-windows\Clearn.dll
+E:\Work\Chunya5\Clearn\obj\Debug\net6.0-windows\ref\Clearn.dll
+E:\Work\Chunya5\Clearn\obj\Debug\net6.0-windows\Clearn.pdb
+E:\Work\Chunya5\Clearn\obj\Debug\net6.0-windows\Clearn.genruntimeconfig.cache
