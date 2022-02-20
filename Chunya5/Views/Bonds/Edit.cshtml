@@ -4,93 +4,114 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>修改债券信息</h1>
 
-<h4>Bonds</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="BondsCode" class="control-label"></label>
-                <input asp-for="BondsCode" class="form-control" />
-                <span asp-validation-for="BondsCode" class="text-danger"></span>
+        <form asp-action="Edit" class="form-inline">
+            <div class="form-row">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group mb-3">
+                    <label asp-for="BondsCode" class="control-label"></label>
+                    <input asp-for="BondsCode" class="form-control" />
+                    <span asp-validation-for="BondsCode" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="BondsName" class="control-label"></label>
+                    <input asp-for="BondsName" class="form-control" />
+                    <span asp-validation-for="BondsName" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Market" class="control-label"></label>
+                    <input asp-for="Market" class="form-control" />
+                    <span asp-validation-for="Market" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="ParValue" class="control-label"></label>
+                    <input asp-for="ParValue" disabled="disabled" value="100" class="form-control" />
+                    <span asp-validation-for="ParValue" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Rate" class="control-label"></label>
+                    <div class="input-group mb-3">
+                        <input asp-for="Rate" type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="basic-addon2">%</span>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Rate" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group mb-3">
+                    <label asp-for="StartDate" class="control-label"></label>
+                    <input id="startTime" onblur="calculateTerm()" asp-for="StartDate" type="date" class="form-control" />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Term" class="control-label"></label>
+                    <input id="term" onblur="calculateTerm()" asp-for="Term" class="form-control" />
+                    <span asp-validation-for="Term" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="EndDate" class="control-label"></label>
+                    <input id="endTime" asp-for="EndDate" type="date" class="form-control" />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="form-group mb-3">
+                    <label asp-for="Frequency" class="control-label"></label>
+                    <select asp-for="Frequency" class="form-control" disabled="disabled">
+                        <option value="nianfu" selected="selected">年付</option>
+                        <option value="yuefu">月付</option>
+                        <option value="jifu">季付</option>
+                    </select>
+                    <span asp-validation-for="Frequency" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <input type="submit" value="编辑" class="btn btn-primary" />
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="BondsName" class="control-label"></label>
-                <input asp-for="BondsName" class="form-control" />
-                <span asp-validation-for="BondsName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Market" class="control-label"></label>
-                <input asp-for="Market" class="form-control" />
-                <span asp-validation-for="Market" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ParValue" class="control-label"></label>
-                <input asp-for="ParValue" class="form-control" />
-                <span asp-validation-for="ParValue" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rate" class="control-label"></label>
-                <input asp-for="Rate" class="form-control" />
-                <span asp-validation-for="Rate" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsDel" /> @Html.DisplayNameFor(model => model.IsDel)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="StartDate" class="control-label"></label>
-                <input asp-for="StartDate" class="form-control" />
-                <span asp-validation-for="StartDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EndDate" class="control-label"></label>
-                <input asp-for="EndDate" class="form-control" />
-                <span asp-validation-for="EndDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddTime" class="control-label"></label>
-                <input asp-for="AddTime" class="form-control" />
-                <span asp-validation-for="AddTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UpdateTime" class="control-label"></label>
-                <input asp-for="UpdateTime" class="form-control" />
-                <span asp-validation-for="UpdateTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddMan" class="control-label"></label>
-                <input asp-for="AddMan" class="form-control" />
-                <span asp-validation-for="AddMan" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ModifyMan" class="control-label"></label>
-                <input asp-for="ModifyMan" class="form-control" />
-                <span asp-validation-for="ModifyMan" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Term" class="control-label"></label>
-                <input asp-for="Term" class="form-control" />
-                <span asp-validation-for="Term" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Frequency" class="control-label"></label>
-                <select asp-for="Frequency" class="form-control"></select>
-                <span asp-validation-for="Frequency" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">返回列表</a>
 </div>
+<script>
+        Date.prototype.Format = function (fmt) { //author: meizz
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "H+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    }
+        function calculateTerm(){
 
+            let startTimeValue = document.getElementById("startTime").value;
+            let termValue = document.getElementById("term").value;
+            let endTime = document.getElementById("endTime");
+
+            if(startTimeValue != null && termValue != null)
+            {
+                 let startTime = new Date(startTimeValue);
+                 startTime.setFullYear(startTime.getFullYear()*1+termValue*1,startTime.getMonth(),startTime.getDay())
+
+                endTime.value =startTime.Format("yyyy-MM-dd");
+            }
+
+        }
+</script>

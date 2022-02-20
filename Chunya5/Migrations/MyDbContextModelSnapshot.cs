@@ -46,7 +46,7 @@ namespace Chunya5.Migrations
                     b.Property<int>("Frequency")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsDel")
+                    b.Property<bool>("IsDelete")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Market")
@@ -77,6 +77,72 @@ namespace Chunya5.Migrations
                     b.ToTable("Bonds");
                 });
 
+            modelBuilder.Entity("Chunya5.Models.Position", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("AccInterest")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("AccUninterestImcome")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("Accout")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("AddMan")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("AddTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("BondsCode")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<decimal>("DenominattonHeld")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("FloatingPl")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("InterestCost")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<bool>("IsDeleteete")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("ModifyMan")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<decimal>("NetCost")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("RealizedInterestIncome")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("TotalInterestIncome")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<DateTime>("TradeDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<decimal>("TradingProloss")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<DateTime>("UpdateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Positions");
+                });
+
             modelBuilder.Entity("Chunya5.Models.Trade", b =>
                 {
                     b.Property<int>("Id")
@@ -89,6 +155,13 @@ namespace Chunya5.Migrations
 
                     b.Property<decimal>("Accrued")
                         .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("AddMan")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("AddTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(65,30)");
@@ -103,10 +176,17 @@ namespace Chunya5.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("ModifyMan")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<decimal>("NetPrace")
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<DateTime>("TradeDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("UpdateTime")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");

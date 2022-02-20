@@ -24,24 +24,28 @@ namespace Chunya5.Models
         [Required, Display(Name = "固定利率")]
         public double Rate { get; set; }
 
-        public bool IsDel { get; set; } = false;
+        public bool IsDelete{ get; set; } = false;
 
         [Required, Display(Name = "起息日")]
+        [DisplayFormat(DataFormatString = "{0:yyyy年MM月dd日}")]
         public DateTime StartDate { get; set; }
 
         [Required, Display(Name = "到息日")]
+        [DisplayFormat(DataFormatString = "{0:yyyy年MM月dd日}")]
         public DateTime EndDate { get; set; }
 
-        [Required, Display(Name = "添加时间")]
+        [Display(Name = "添加时间")]
+        [DisplayFormat(DataFormatString = "{0:yyyy年MM月dd日}")]
         public DateTime AddTime { get; set; } = DateTime.Now;
 
-        [Required, Display(Name = "更新时间")]
+        [Display(Name = "更新时间")]
+        [DisplayFormat(DataFormatString = "{0:yyyy年MM月dd日}")]
         public DateTime UpdateTime { get; set; }
 
-        [Required, Display(Name = "新增人")]
+        [Display(Name = "新增人")]
         public string AddMan { get; set; } = "";
 
-        [Required, Display(Name = "修改人")]
+        [Display(Name = "修改人")]
         public string ModifyMan { get; set; } = "";
 
         //期限

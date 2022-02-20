@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Chunya5.Migrations
 {
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,7 +27,7 @@ namespace Chunya5.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ParValue = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     Rate = table.Column<double>(type: "double", nullable: false),
-                    IsDel = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     AddTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -46,6 +46,40 @@ namespace Chunya5.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Positions",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    AddTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    AddMan = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ModifyMan = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IsDeleteete = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Accout = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    BondsCode = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TradeDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    NetCost = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    InterestCost = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    AccInterest = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    AccUninterestImcome = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    RealizedInterestIncome = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    TotalInterestIncome = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    TradingProloss = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    FloatingPl = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    DenominattonHeld = table.Column<decimal>(type: "decimal(65,30)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Positions", x => x.ID);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Trade",
                 columns: table => new
                 {
@@ -60,7 +94,13 @@ namespace Chunya5.Migrations
                     Deno = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     NetPrace = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     Accrued = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(65,30)", nullable: false)
+                    Amount = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    AddTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    AddMan = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ModifyMan = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
@@ -73,6 +113,9 @@ namespace Chunya5.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Bonds");
+
+            migrationBuilder.DropTable(
+                name: "Positions");
 
             migrationBuilder.DropTable(
                 name: "Trade");

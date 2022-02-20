@@ -9,11 +9,12 @@ namespace Chunya5.Models
         [Required,Display(Name ="交易账户")]
         public string Account { get; set; } = "";
 
-        [Required, Display(Name = "债权代码")]
+        [Required, Display(Name = "债权编码")]
         public int BondsCode { get; set; }
         //public Bonds Bonds { get; set; }
 
         [Required, Display(Name = "交易时间")]
+        [DisplayFormat(DataFormatString = "{0:yyyy年MM月dd日}")]
         public DateTime TradeDate { get; set; }
 
         //交易方向（买或卖）
@@ -32,6 +33,18 @@ namespace Chunya5.Models
         [Required, Display(Name = "结算金额")]
         public decimal Amount { get; set; }
 
+        [Display(Name = "添加时间")]
+        [DisplayFormat(DataFormatString = "{0:yyyy年MM月dd日}")]
+        public DateTime AddTime { get; set; } = DateTime.Now;
 
+        [Display(Name = "更新时间")]
+        [DisplayFormat(DataFormatString = "{0:yyyy年MM月dd日}")]
+        public DateTime UpdateTime { get; set; }
+
+        [Display(Name = "新增人")]
+        public string AddMan { get; set; } = "";
+
+        [Display(Name = "修改人")]
+        public string ModifyMan { get; set; } = "";
     }
 }

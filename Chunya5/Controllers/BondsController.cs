@@ -24,6 +24,8 @@ namespace Chunya5.Controllers
         public async Task<IActionResult> Index()
         {
 
+
+
             return View(await _context.Bonds.ToListAsync());
         }
 
@@ -56,15 +58,15 @@ namespace Chunya5.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,BondsCode,BondsName,Market,ParValue,Rate,IsDel,StartDate,EndDate,AddTime,UpdateTime,AddMan,ModifyMan,Term,Frequency")] Bonds bonds)
+        public async Task<IActionResult> Create(Bonds bonds)
         {
             if (ModelState.IsValid)
             {
-
                 _context.Add(bonds);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            
             return View(bonds);
         }
 
@@ -89,7 +91,7 @@ namespace Chunya5.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,BondsCode,BondsName,Market,ParValue,Rate,IsDel,StartDate,EndDate,AddTime,UpdateTime,AddMan,ModifyMan,Term,Frequency")] Bonds bonds)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,BondsCode,BondsName,Market,ParValue,Rate,IsDelete,StartDate,EndDate,AddTime,UpdateTime,AddMan,ModifyMan,Term,Frequency")] Bonds bonds)
         {
             if (id != bonds.Id)
             {
