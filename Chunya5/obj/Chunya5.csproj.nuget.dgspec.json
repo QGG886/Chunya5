@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Work\\Chunya5\\Chunya5\\Chunya5.csproj": {}
+    "C:\\Users\\1\\Source\\Repos\\Chunya\\Chunya5\\Chunya5.csproj": {}
   },
   "projects": {
-    "E:\\Work\\Chunya5\\Chunya5\\Chunya5.csproj": {
+    "C:\\Users\\1\\Source\\Repos\\Chunya\\Chunya5\\Chunya5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Work\\Chunya5\\Chunya5\\Chunya5.csproj",
+        "projectUniqueName": "C:\\Users\\1\\Source\\Repos\\Chunya\\Chunya5\\Chunya5.csproj",
         "projectName": "Chunya5",
-        "projectPath": "E:\\Work\\Chunya5\\Chunya5\\Chunya5.csproj",
-        "packagesPath": "C:\\Users\\zeq88\\.nuget\\packages\\",
-        "outputPath": "E:\\Work\\Chunya5\\Chunya5\\obj\\",
+        "projectPath": "C:\\Users\\1\\Source\\Repos\\Chunya\\Chunya5\\Chunya5.csproj",
+        "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\1\\Source\\Repos\\Chunya\\Chunya5\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\zeq88\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\1\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -87,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
