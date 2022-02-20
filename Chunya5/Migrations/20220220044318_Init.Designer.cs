@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Chunya5.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20220220035901_Init")]
+    [Migration("20220220044318_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
