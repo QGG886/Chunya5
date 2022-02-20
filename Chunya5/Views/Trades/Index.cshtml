@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Chunya5.Models.Trade>
+﻿@model PageList<Chunya5.Models.Trade>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,28 +13,28 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Account)
+                @Html.DisplayNameFor(model => model[0].Account)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BondsCode)
+                @Html.DisplayNameFor(model => model[0].BondsCode)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TradeDate)
+                @Html.DisplayNameFor(model => model[0].TradeDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Direction)
+                @Html.DisplayNameFor(model => model[0].Direction)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Deno)
+                @Html.DisplayNameFor(model => model[0].Deno)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NetPrace)
+                @Html.DisplayNameFor(model => model[0].NetPrace)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Accrued)
+                @Html.DisplayNameFor(model => model[0].Accrued)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Amount)
+                @Html.DisplayNameFor(model => model[0].Amount)
             </th>
             <th></th>
         </tr>
@@ -68,10 +68,48 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<nav style="float:right;">
+    <ul class="pagination">
+        @if (Model.HasPrevious)
+        {
+            <li class="page-item">
+            <a class="page-link"
+               asp-action="index"
+               asp-route-page=@(Model.CurrentPage-1)
+               asp-route-tradeAccount=@ViewBag.tradeAccount
+               asp-route-tradeDate=@ViewBag.tradeDate aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        }
+        @for (var i = 0; i < Model.TotalPages; i++)
+        {
+            <li class="page-item">
+                <a class="page-link"
+               asp-action="index"
+               asp-route-page=@(i+1)
+               asp-route-tradeAccount=@ViewBag.tradeAccount
+               asp-route-tradeDate=@ViewBag.tradeDate>@(i+1)</a>
+            </li>
+        }
+        @if (Model.HasNext)
+        {
+            <li class="page-item">
+            <a class="page-link"
+               
+               asp-action="index"
+               asp-route-page=@(Model.CurrentPage+1)
+               asp-route-tradeAccount=@ViewBag.tradeAccount
+               asp-route-tradeDate=@ViewBag.tradeDate aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        }
+    </ul>
+</nav>

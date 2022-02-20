@@ -1,4 +1,4 @@
-﻿#nullable disable
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Chunya5.Data;
 using Chunya5.Models;
+using Chunya5.Helper;
 
 namespace Chunya5.Controllers
 {
@@ -21,31 +22,30 @@ namespace Chunya5.Controllers
         }
 
         // GET: Bonds
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? bondsCode,string? bondsName,int page)
         {
+            var pageSize = 5;
+            var bonds = _context.Bonds.Where(x=>x.IsDelete == false) as IQueryable<Bonds>; ;
+            if (!String.IsNullOrEmpty(bondsCode))
+            {
+                ViewBag.bondsCode = bondsCode;
+                bonds = bonds
+                    .Where(x => (x.BondsCode.Contains(bondsCode)));
+            }
+            if (!String.IsNullOrEmpty(bondsName))
+            {
+                ViewBag.bondsName = bondsName;
+                bonds = bonds
+                    .Where(x => (x.BondsName.Contains(bondsName)));
+            }
+            if (page == 0) page = 1;
 
+            bonds.OrderBy(x => x.StartDate);
 
-
-            return View(await _context.Bonds.ToListAsync());
+            return View(await PageList<Bonds>.CreatPageListAsync(bonds, page, pageSize));
         }
 
-        // GET: Bonds/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var bonds = await _context.Bonds
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (bonds == null)
-            {
-                return NotFound();
-            }
-
-            return View(bonds);
-        }
+        
 
         // GET: Bonds/Create
         public IActionResult Create()
@@ -53,9 +53,7 @@ namespace Chunya5.Controllers
             return View();
         }
 
-        // POST: Bonds/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Bonds bonds)
@@ -66,7 +64,7 @@ namespace Chunya5.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            
+
             return View(bonds);
         }
 
@@ -86,12 +84,10 @@ namespace Chunya5.Controllers
             return View(bonds);
         }
 
-        // POST: Bonds/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,BondsCode,BondsName,Market,ParValue,Rate,IsDelete,StartDate,EndDate,AddTime,UpdateTime,AddMan,ModifyMan,Term,Frequency")] Bonds bonds)
+        public async Task<IActionResult> Edit(int id, Bonds bonds)
         {
             if (id != bonds.Id)
             {
@@ -145,7 +141,11 @@ namespace Chunya5.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var bonds = await _context.Bonds.FindAsync(id);
-            _context.Bonds.Remove(bonds);
+            if (bonds != null)
+            {
+                bonds.IsDelete = true;
+            }
+            //_context.Bonds.Remove(bonds);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

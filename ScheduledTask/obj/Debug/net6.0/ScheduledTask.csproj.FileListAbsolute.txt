@@ -1,0 +1,15 @@
+E:\Work\Chunya5\ScheduledTask\bin\Debug\net6.0\ScheduledTask.exe
+E:\Work\Chunya5\ScheduledTask\bin\Debug\net6.0\ScheduledTask.deps.json
+E:\Work\Chunya5\ScheduledTask\bin\Debug\net6.0\ScheduledTask.runtimeconfig.json
+E:\Work\Chunya5\ScheduledTask\bin\Debug\net6.0\ScheduledTask.dll
+E:\Work\Chunya5\ScheduledTask\bin\Debug\net6.0\ref\ScheduledTask.dll
+E:\Work\Chunya5\ScheduledTask\bin\Debug\net6.0\ScheduledTask.pdb
+E:\Work\Chunya5\ScheduledTask\obj\Debug\net6.0\ScheduledTask.csproj.AssemblyReference.cache
+E:\Work\Chunya5\ScheduledTask\obj\Debug\net6.0\ScheduledTask.GeneratedMSBuildEditorConfig.editorconfig
+E:\Work\Chunya5\ScheduledTask\obj\Debug\net6.0\ScheduledTask.AssemblyInfoInputs.cache
+E:\Work\Chunya5\ScheduledTask\obj\Debug\net6.0\ScheduledTask.AssemblyInfo.cs
+E:\Work\Chunya5\ScheduledTask\obj\Debug\net6.0\ScheduledTask.csproj.CoreCompileInputs.cache
+E:\Work\Chunya5\ScheduledTask\obj\Debug\net6.0\ScheduledTask.dll
+E:\Work\Chunya5\ScheduledTask\obj\Debug\net6.0\ref\ScheduledTask.dll
+E:\Work\Chunya5\ScheduledTask\obj\Debug\net6.0\ScheduledTask.pdb
+E:\Work\Chunya5\ScheduledTask\obj\Debug\net6.0\ScheduledTask.genruntimeconfig.cache

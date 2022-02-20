@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace Chunya5.Models
 {
@@ -6,11 +7,14 @@ namespace Chunya5.Models
     {
         public int Id { get; set; }
 
+        public bool IsDelete { get; set; } = false;
+
         [Required,Display(Name ="交易账户")]
         public string Account { get; set; } = "";
 
         [Required, Display(Name = "债权编码")]
-        public int BondsCode { get; set; }
+        [Remote("CheckBonds", "Trades", ErrorMessage = "该债券不存在")]
+        public string BondsCode { get; set; } = "";
         //public Bonds Bonds { get; set; }
 
         [Required, Display(Name = "交易时间")]

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Chunya5.Models.Bonds>
+﻿@model PageList<Bonds>
 
 @{
     ViewData["Title"] = "Index";
@@ -9,44 +9,54 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<div class="input-group mb-3" style="width:500px">
-  <input type="text" class="form-control" placeholder="请输入债券编码和债券名称查询" aria-label="Recipient's username" aria-describedby="button-addon2">
-  <div class="input-group-append">
-    <button class="btn btn-outline-secondary" style="border-radius:0 2px 2px 0" type="button" id="button-addon2">搜索</button>
-  </div>
-</div>
+<form asp-action="index" asp-route-page=1>
+    <div class="input-group mb-3" style="width:500px">
+        <input type="text" class="form-control" placeholder="请输入债券编码查询" name="bondsCode">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" style="border-radius:0 2px 2px 0" type="submit">搜索</button>
+        </div>
+    </div>
+</form>
+<form asp-action="index" asp-route-page=1>
+    <div class="input-group mb-3" style="width:500px">
+        <input type="text" class="form-control" placeholder="请输入债券名称查询" name="bondsName">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" style="border-radius:0 2px 2px 0" type="submit">搜索</button>
+        </div>
+    </div>
+</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.BondsCode)
+                @Html.DisplayNameFor(model => model[0].BondsCode)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BondsName)
+                @Html.DisplayNameFor(model => model[0].BondsName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Market)
+                @Html.DisplayNameFor(model => model[0].Market)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ParValue)
+                @Html.DisplayNameFor(model => model[0].ParValue)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Rate)
+                @Html.DisplayNameFor(model => model[0].Rate)
             </th>
-            
+
             <th>
-                @Html.DisplayNameFor(model => model.StartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndDate)
-            </th>
-            
-            
-            <th>
-                @Html.DisplayNameFor(model => model.Term)
+                @Html.DisplayNameFor(model => model[0].StartDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Frequency)
+                @Html.DisplayNameFor(model => model[0].EndDate)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model[0].Term)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Frequency)
             </th>
             <th></th>
         </tr>
@@ -70,14 +80,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Rate)%
                 </td>
-               
+
                 <td>
                     @Html.DisplayFor(modelItem => item.StartDate)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.EndDate)
                 </td>
-                
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Term)
                 </td>
@@ -85,10 +95,42 @@
                     @Html.DisplayFor(modelItem => item.Frequency)
                 </td>
                 <td>
-                    <a asp-action="Edit"  class="btn btn-info" asp-route-id="@item.Id">编辑</a>
+                    <a asp-action="Edit" class="btn btn-info" asp-route-id="@item.Id">编辑</a>
                     <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">删除</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+<nav style="float:right;">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link"
+               asp-action="index"
+               asp-route-page=@(Model.CurrentPage-1)
+               asp-route-bondsCode=@ViewBag.bondsCode
+               asp-route-bondsName=@ViewBag.bondsName aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        @for (var i = 0; i < Model.TotalPages; i++)
+        {
+            <li class="page-item">
+                <a class="page-link"
+               asp-action="index"
+               asp-route-page=@(i+1)
+               asp-route-bondsCode=@ViewBag.bondsCode
+               asp-route-bondsName=@ViewBag.bondsName>@(i+1)</a>
+            </li>
+        }
+        <li class="page-item">
+            <a class="page-link"
+               asp-action="index"
+               asp-route-page=@(Model.CurrentPage+1)
+               asp-route-bondsCode=@ViewBag.bondsCode
+               asp-route-bondsName=@ViewBag.bondsName aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

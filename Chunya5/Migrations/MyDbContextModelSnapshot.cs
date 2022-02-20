@@ -166,8 +166,9 @@ namespace Chunya5.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<int>("BondsCode")
-                        .HasColumnType("int");
+                    b.Property<string>("BondsCode")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<decimal>("Deno")
                         .HasColumnType("decimal(65,30)");
@@ -175,6 +176,9 @@ namespace Chunya5.Migrations
                     b.Property<string>("Direction")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ModifyMan")
                         .IsRequired()

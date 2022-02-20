@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Chunya5.Data;
 using Chunya5.Models;
+using Chunya5.Helper;
 
 namespace Chunya5.Controllers
 {
@@ -21,9 +22,25 @@ namespace Chunya5.Controllers
         }
 
         // GET: Trades
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? tradeAaccount, DateTime? tradeDate, int page)
         {
-            return View(await _context.Trade.ToListAsync());
+            var pageSize = 5;
+            var trades = _context.Trade.Where(x=>x.IsDelete == false) as IQueryable<Trade>;
+
+            if (!String.IsNullOrEmpty(tradeAaccount))
+            {
+                trades = trades.Where(x=>x.Account.Contains(tradeAaccount));
+            }
+            if (tradeDate != null)
+            {
+                trades = trades.Where(x => x.TradeDate==tradeDate);
+            }
+
+            if (page == 0) page = 1;
+
+            trades.OrderBy(x => x.TradeDate);
+
+            return View(await PageList<Trade>.CreatPageListAsync(trades, page, pageSize));
         }
 
         // GET: Trades/Details/5
@@ -87,7 +104,7 @@ namespace Chunya5.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Account,BondsCode,TradeDate,Direction,Deno,NetPrace,Accrued,Amount")] Trade trade)
+        public async Task<IActionResult> Edit(int id,  Trade trade)
         {
             if (id != trade.Id)
             {
@@ -149,6 +166,16 @@ namespace Chunya5.Controllers
         private bool TradeExists(int id)
         {
             return _context.Trade.Any(e => e.Id == id);
+        }
+
+        public JsonResult CheckBonds(string bondsCode)
+
+        {
+
+            var result = _context.Bonds.Any(x => x.BondsCode == bondsCode);
+
+            return Json(!result);
+
         }
     }
 }
