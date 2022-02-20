@@ -1,14 +1,8 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Chunya5.Data;
-using Chunya5.Models;
+﻿using Chunya5.Data;
 using Chunya5.Helper;
+using Chunya5.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Chunya5.Controllers
 {
@@ -45,7 +39,20 @@ namespace Chunya5.Controllers
             return View(await PageList<Bonds>.CreatPageListAsync(bonds, page, pageSize));
         }
 
-        
+        public async Task<IActionResult> GetBondsByCode(string? code)
+        {
+            //if (!String.IsNullOrWhiteSpace(code))
+            //{
+            //    return NotFound();
+            //}
+
+            var bonds = await _context.Bonds.FirstOrDefaultAsync(x=>x.BondsCode==code);
+            if (bonds == null)
+            {
+                return NotFound();
+            }
+            return Ok(bonds);
+        }
 
         // GET: Bonds/Create
         public IActionResult Create()

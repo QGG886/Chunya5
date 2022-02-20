@@ -3,7 +3,7 @@
 namespace Chunya5.Models
 {
     //持仓表
-    public class Position
+    public class Positions
     {
         public int ID { get; set; }
 
@@ -21,7 +21,7 @@ namespace Chunya5.Models
         [ Display(Name = "修改人")]
         public string ModifyMan { get; set; } = "";
 
-        public bool IsDeleteete { get; set; } = false;
+        public bool IsDelete { get; set; } = false;
 
         [Required, Display(Name = "账户")]
         public string Accout { get; set; } = "";

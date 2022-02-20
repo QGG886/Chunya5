@@ -32,6 +32,12 @@ namespace Chunya5.Migrations
                     b.Property<DateTime>("AddTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<bool>("AllowDelete")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("AllowEdit")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("BondsCode")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -77,7 +83,7 @@ namespace Chunya5.Migrations
                     b.ToTable("Bonds");
                 });
 
-            modelBuilder.Entity("Chunya5.Models.Position", b =>
+            modelBuilder.Entity("Chunya5.Models.Positions", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -113,7 +119,7 @@ namespace Chunya5.Migrations
                     b.Property<decimal>("InterestCost")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool>("IsDeleteete")
+                    b.Property<bool>("IsDelete")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ModifyMan")

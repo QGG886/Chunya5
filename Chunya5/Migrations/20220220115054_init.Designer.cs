@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Chunya5.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20220220044318_Init")]
-    partial class Init
+    [Migration("20220220115054_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,6 +33,12 @@ namespace Chunya5.Migrations
 
                     b.Property<DateTime>("AddTime")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("AllowDelete")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("AllowEdit")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("BondsCode")
                         .IsRequired()
@@ -79,7 +85,7 @@ namespace Chunya5.Migrations
                     b.ToTable("Bonds");
                 });
 
-            modelBuilder.Entity("Chunya5.Models.Position", b =>
+            modelBuilder.Entity("Chunya5.Models.Positions", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -115,7 +121,7 @@ namespace Chunya5.Migrations
                     b.Property<decimal>("InterestCost")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool>("IsDeleteete")
+                    b.Property<bool>("IsDelete")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ModifyMan")
@@ -168,8 +174,9 @@ namespace Chunya5.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<int>("BondsCode")
-                        .HasColumnType("int");
+                    b.Property<string>("BondsCode")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<decimal>("Deno")
                         .HasColumnType("decimal(65,30)");
@@ -177,6 +184,9 @@ namespace Chunya5.Migrations
                     b.Property<string>("Direction")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ModifyMan")
                         .IsRequired()

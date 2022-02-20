@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Chunya5.Migrations
 {
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,6 +28,8 @@ namespace Chunya5.Migrations
                     ParValue = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     Rate = table.Column<double>(type: "double", nullable: false),
                     IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    AllowDelete = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    AllowEdit = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     AddTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
@@ -57,7 +59,7 @@ namespace Chunya5.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ModifyMan = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    IsDeleteete = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     Accout = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     BondsCode = table.Column<string>(type: "longtext", nullable: false)
@@ -85,9 +87,11 @@ namespace Chunya5.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    IsDelete = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     Account = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    BondsCode = table.Column<int>(type: "int", nullable: false),
+                    BondsCode = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     TradeDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     Direction = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),

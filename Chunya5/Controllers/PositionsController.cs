@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Chunya5.Data;
 using Chunya5.Models;
+using Chunya5.Helper;
 
 namespace Chunya5.Controllers
 {
@@ -21,9 +22,27 @@ namespace Chunya5.Controllers
         }
 
         // GET: Positions
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string account, DateTime? date, int page)
         {
-            return View(await _context.Positions.ToListAsync());
+            var pageSize = 5;
+            var positions = _context.Positions.Where(x => x.IsDelete == false) as IQueryable<Positions>; ;
+            if (!String.IsNullOrEmpty(account))
+            {
+                ViewBag.account = account;
+                positions = positions
+                    .Where(x => (x.Accout.Contains(account)));
+            }
+            if (!string.IsNullOrEmpty(date.ToString()))
+            {
+                ViewBag.date = date;
+                positions = positions
+                    .Where(x => (x.TradeDate.ToString().Contains(date.ToString())));
+            }
+            if (page == 0) page = 1;
+
+            positions.OrderBy(x => x.TradeDate);
+            
+            return View(await PageList<Positions>.CreatPageListAsync(positions, page, pageSize));
         }
 
         // GET: Positions/Details/5
@@ -55,7 +74,7 @@ namespace Chunya5.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,AddTime,UpdateTime,AddMan,ModifyMan,IsDeleteete,Accout,BondsCode,TradeDate,NetCost,InterestCost,AccInterest,AccUninterestImcome,RealizedInterestIncome,TotalInterestIncome,TradingProloss,FloatingPl,DenominattonHeld")] Position position)
+        public async Task<IActionResult> Create([Bind("ID,AddTime,UpdateTime,AddMan,ModifyMan,IsDeleteete,Accout,BondsCode,TradeDate,NetCost,InterestCost,AccInterest,AccUninterestImcome,RealizedInterestIncome,TotalInterestIncome,TradingProloss,FloatingPl,DenominattonHeld")] Positions position)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +106,7 @@ namespace Chunya5.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,AddTime,UpdateTime,AddMan,ModifyMan,IsDeleteete,Accout,BondsCode,TradeDate,NetCost,InterestCost,AccInterest,AccUninterestImcome,RealizedInterestIncome,TotalInterestIncome,TradingProloss,FloatingPl,DenominattonHeld")] Position position)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,AddTime,UpdateTime,AddMan,ModifyMan,IsDeleteete,Accout,BondsCode,TradeDate,NetCost,InterestCost,AccInterest,AccUninterestImcome,RealizedInterestIncome,TotalInterestIncome,TradingProloss,FloatingPl,DenominattonHeld")] Positions position)
         {
             if (id != position.ID)
             {

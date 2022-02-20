@@ -1,18 +1,32 @@
-﻿@model IEnumerable<Chunya5.Models.Position>
-
-@{
+﻿@model PageList<Positions>
+@*@{
     ViewData["Title"] = "Index";
-}
+}*@
 
-<h1>Index</h1>
+<h1>资产持仓信息查询</h1>
 
-<p>
+@*<p>
     <a asp-action="Create">Create New</a>
-</p>
+</p>*@
+
+
+<form asp-action="index" asp-route-page=1>
+    <div class="input-group mb-3" style="width:500px">
+        <input type="text" class="form-control" placeholder="输入交易账户查询" name="account">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="Date" class="form-control" placeholder="请输入日期查询" name="date">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" style="border-radius:0 2px 2px 0" type="submit">搜索</button>
+        </div>
+    </div>
+</form>
+
+
 <table class="table">
     <thead>
         <tr>
-            <th>
+        @*    <th>
                 @Html.DisplayNameFor(model => model.AddTime)
             </th>
             <th>
@@ -26,42 +40,42 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsDeleteete)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model[0].Accout)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Accout)
+                @Html.DisplayNameFor(model => model[0].BondsCode)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BondsCode)
+                @Html.DisplayNameFor(model => model[0].TradeDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TradeDate)
+                @Html.DisplayNameFor(model => model[0].NetCost)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NetCost)
+                @Html.DisplayNameFor(model => model[0].InterestCost)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.InterestCost)
+                @Html.DisplayNameFor(model => model[0].AccInterest)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AccInterest)
+                @Html.DisplayNameFor(model => model[0].AccUninterestImcome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AccUninterestImcome)
+                @Html.DisplayNameFor(model => model[0].RealizedInterestIncome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RealizedInterestIncome)
+                @Html.DisplayNameFor(model => model[0].TotalInterestIncome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TotalInterestIncome)
+                @Html.DisplayNameFor(model => model[0].TradingProloss)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TradingProloss)
+                @Html.DisplayNameFor(model => model[0].FloatingPl)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FloatingPl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DenominattonHeld)
+                @Html.DisplayNameFor(model => model[0].DenominattonHeld)
             </th>
             <th></th>
         </tr>
@@ -69,7 +83,7 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+          @*  <td>
                 @Html.DisplayFor(modelItem => item.AddTime)
             </td>
             <td>
@@ -83,7 +97,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsDeleteete)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Accout)
             </td>
@@ -120,12 +134,44 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DenominattonHeld)
             </td>
-            <td>
+           @* <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
+            </td>*@
         </tr>
 }
     </tbody>
 </table>
+<nav style="float:right;">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link"
+               asp-action="index"
+               asp-route-page=@(Model.CurrentPage-1)
+               asp-route-account=@ViewBag.account
+               asp-route-date=@ViewBag.date aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        @for (var i = 0; i < Model.TotalPages; i++)
+        {
+            <li class="page-item">
+                <a class="page-link"
+               asp-action="index"
+               asp-route-page=@(i+1)
+               asp-route-account=@ViewBag.account
+               asp-route-date=@ViewBag.date>@(i+1)</a>
+            </li>
+        }
+        <li class="page-item">
+            <a class="page-link"
+               asp-action="index"
+               asp-route-page=@(Model.CurrentPage+1)
+               asp-route-account=@ViewBag.account
+               asp-route-date=@ViewBag.date aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

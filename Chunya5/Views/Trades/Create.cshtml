@@ -19,12 +19,12 @@
             </div>
             <div class="form-group mb-3 ">
                 <label asp-for="BondsCode" class="control-label"></label>
-                <input asp-for="BondsCode" class="form-control" />
+                <input asp-for="BondsCode" class="form-control" id="BondsCode" onblur="getBonds($('#BondsCode').val())" />
                 <span asp-validation-for="BondsCode" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
                 <label asp-for="TradeDate" class="control-label"></label>
-                <input asp-for="TradeDate" class="form-control" />
+                <input asp-for="TradeDate" type="date" class="form-control" />
                 <span asp-validation-for="TradeDate" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
@@ -38,7 +38,7 @@
             <div class="form-group mb-3">
                 <label asp-for="Deno" class="control-label"></label>
                 <div class="input-group">
-                    <input  asp-for="Deno" type="text"  class="form-control">
+                    <input asp-for="Deno" type="text" class="form-control">
                     <div class="input-group-prepend" style="border-radius:2px 0 0 2px">
                         <span class="input-group-text">X100</span>
                     </div>
@@ -72,6 +72,15 @@
 </div>
 
 <script>
-    
+
+    function getBonds(BondsCode){
+        //(交易日-上一个付息日)*交易面额*年利率/365
+        //alert(BondsCode);
+        $.get("/Bonds/GetBondsByCode",{
+            code: BondsCode
+        },function(data){
+            console.log("Data Loaded: " + data.bondsName);
+        });
+    }
 </script>
 
