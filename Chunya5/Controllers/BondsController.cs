@@ -23,6 +23,7 @@ namespace Chunya5.Controllers
         // GET: Bonds
         public async Task<IActionResult> Index()
         {
+
             return View(await _context.Bonds.ToListAsync());
         }
 
@@ -59,6 +60,7 @@ namespace Chunya5.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 _context.Add(bonds);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

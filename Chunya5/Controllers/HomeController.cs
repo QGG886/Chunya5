@@ -19,10 +19,15 @@ namespace Chunya5.Controllers
 
         public IActionResult Index()
         {
-           
+
+            return View();
+        }
+        public IActionResult Login()
+        {
             return View();
         }
 
+        
         public IActionResult Privacy()
         {
             return View();

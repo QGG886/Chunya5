@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+<body>
+    <div class="container">
+        <h1>Please Login</h1>
+
+        <form>
+            <div class="form-control">
+                <input type="text" required>
+                <label>Email</label>
+
+            </div>
+
+            <div class="form-control">
+                <input type="password" required>
+                <label>password</label>
+            </div>
+
+            <button class="btn" asp-action="index">Login</button>
+
+            <p class="text">Don't have an account? <a href="#">Register</a> </p>
+        </form>
+
+    </div>
+    <script>
+
+        const labels = document.querySelectorAll('.form-control label')
+
+        labels.forEach(label => {
+            label.innerHTML = label.innerText
+                .split('')
+                .map((letter, idx) => `<span style="transition-delay:${idx * 50}ms">${letter}</span>`)
+                .join('')
+        })
+    </script>
+</body>

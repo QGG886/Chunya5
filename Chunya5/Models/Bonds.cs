@@ -12,21 +12,21 @@ namespace Chunya5.Models
         public string BondsCode { get; set; } = "";
 
         [Required]
-        [Display(Name ="债权名称")]
+        [Display(Name = "债权名称")]
         public string BondsName { get; set; } = "";
 
-        [Required, Display(Name ="市场")]
+        [Required, Display(Name = "市场")]
         public string Market { get; set; } = "";
 
         [Required, Display(Name = "面值")]
-        public decimal ParValue { get; set; }
+        public decimal ParValue { get; set; } = 100m;
 
         [Required, Display(Name = "固定利率")]
         public double Rate { get; set; }
 
         public bool IsDel { get; set; } = false;
 
-        [Required,Display(Name ="起息日")]
+        [Required, Display(Name = "起息日")]
         public DateTime StartDate { get; set; }
 
         [Required, Display(Name = "到息日")]
