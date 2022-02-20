@@ -169,7 +169,6 @@ namespace Chunya5.Controllers
         }
 
         public JsonResult CheckBonds(string bondsCode)
-
         {
 
             var result = _context.Bonds.Any(x => x.BondsCode == bondsCode);
