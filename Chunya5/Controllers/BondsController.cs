@@ -16,7 +16,7 @@ namespace Chunya5.Controllers
         }
 
         // GET: Bonds
-        public async Task<IActionResult> Index(string? bondsCode,string? bondsName,int page)
+        public async Task<IActionResult> Index(string bondsCode,string bondsName,int page)
         {
             var pageSize = 5;
             var bonds = _context.Bonds.Where(x => x.IsDelete == false);
@@ -41,7 +41,7 @@ namespace Chunya5.Controllers
 
 
 
-        public async Task<IActionResult> GetBondsByCode(string? code)
+        public async Task<IActionResult> GetBondsByCode(string code)
         {
             //if (!String.IsNullOrWhiteSpace(code))
             //{

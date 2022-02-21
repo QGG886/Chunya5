@@ -5,15 +5,82 @@ namespace Chunya5.Servers
 {
     public class LiquidationServer
     {
-        private readonly MyDbContext context;
+        private readonly MyDbContext _context;
 
         public LiquidationServer(MyDbContext context)
         {
-            this.context = context ?? throw new ArgumentNullException(nameof(context));
+            this._context = context ?? throw new ArgumentNullException(nameof(context));
+        }
+
+        /// <summary>
+        /// 搜索最近持仓日期，有点问题不懂
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public DateTime SearchRecentlyOpenDate(string account, DateTime date)
+        {
+            //		select from 持仓 where 账户名称 = 账户名称 , 日期 <= 日期 order by 日期 desc limit 1;
+            //		if(持仓.isEmpty) return null;
+            //		Date date = 持仓.日期;
+
+            //_context.Positions.Where(x=>x.Accout==account && date <= )
+            //return null;
+            return new DateTime(date.Year, date.Month, 1);
+        }
+
+        /// <summary>
+        /// 计算两个日期之间的天数
+        /// </summary>
+        /// <param name="startTime"></param>
+        /// <param name="endTime"></param>
+        /// <returns></returns>
+        public int CalculateDays(DateTime startTime,DateTime endTime)
+        {
+            if(endTime < startTime)
+            {
+                return 0;
+            }
+            int days = endTime.Subtract(startTime).Days;
+
+            return days;
         }
 
 
+        /// <summary>
+        /// 获取债券信息
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public Bonds GetBonds(string code)
+        {
+            var bonds = _context.Bonds.FirstOrDefault(x=>x.BondsCode==code);
+            if (bonds == null)
+            {
+                return null;
 
+            }
+            return bonds;
+        }
+
+        /// <summary>
+        /// 获取交易表所有的账户
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetAllAccount()
+        {
+            List<string> accounts = new List<string>();
+
+            foreach (var trade in _context.Trade)
+            {
+                if (!accounts.Contains(trade.Account))
+                {
+                    accounts.Add(trade.Account);
+                }
+            }
+            return accounts;
+        }
+        
         /// <summary>
         /// 计算上一个付息日
         /// </summary>
@@ -111,5 +178,6 @@ namespace Chunya5.Servers
 
         }
 
+        
     }
 }

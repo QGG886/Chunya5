@@ -3,6 +3,7 @@ using System;
 using Chunya5.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Chunya5.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220221150701_addProp")]
+    partial class addProp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -127,7 +129,7 @@ namespace Chunya5.Migrations
                     b.Property<decimal>("AccUninterestImcome")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("Account")
+                    b.Property<string>("Accout")
                         .IsRequired()
                         .HasColumnType("longtext");
 

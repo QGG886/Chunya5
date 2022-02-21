@@ -17,25 +17,30 @@ namespace Chunya5.Controllers
             this._context = myDbContext ?? throw new ArgumentNullException(nameof(myDbContext));
             this.liquidationServer = liquidationServer ?? throw new ArgumentNullException(nameof(liquidationServer));
         }
-        public async Task<IActionResult> Index(string account, DateTime liDate, int page)
+        public IActionResult Index()
+        {
+
+            return View();
+        }
+        public async Task<IActionResult> Calculate(string account, DateTime liDate, int page)
         {
             var pageSize = 5;
             var positions = _context.Positions.Where(x => x.IsDelete == false);
 
             //判断持仓表是否包含该账户的持仓记录
-            if (!positions.Where(x => x.Accout == account).Any())
-            {
-                //获取交易表中该账户的最早交易记录时间
-                var firstTradeDate = _context.Trade
-                   .Where(x => x.Account == account && x.TradeDate <= liDate && x.IsDelete == false)
-                   .OrderByDescending(x => x.TradeDate).First().TradeDate;
+            //if (!positions.Where(x => x.Accout == account).Any())
+            //{
+            //    //获取交易表中该账户的最早交易记录时间
+            //    var firstTradeDate = _context.Trade
+            //       .Where(x => x.Account == account && x.TradeDate <= liDate && x.IsDelete == false)
+            //       .OrderByDescending(x => x.TradeDate).First().TradeDate;
 
 
-                //根据最早交易时间获取当天所有的交易记录
-                var firstTradeDateTrades = _context.Trade
-                   .Where(x => x.TradeDate == firstTradeDate && x.Account == account && x.IsDelete == false).ToList();
+            //    //根据最早交易时间获取当天所有的交易记录
+            //    var firstTradeDateTrades = _context.Trade
+            //       .Where(x => x.TradeDate == firstTradeDate && x.Account == account && x.IsDelete == false).ToList();
 
-            }
+            //}
 
 
             if (page == 0) page = 1;
@@ -52,10 +57,9 @@ namespace Chunya5.Controllers
                 FloatProfit = 0,
                 MoneyFlows = moneyFlows
             };
-
-
             return View(model);
         }
+
         /// <summary>
         /// 查询该账户在某一天的所有交易记录，并根据债券编码进行合并操作
         /// </summary>
@@ -142,7 +146,7 @@ namespace Chunya5.Controllers
             {
                 Positions positions = new Positions();
 
-                positions.Accout = trade.Account;//账户
+                positions.Account = trade.Account;//账户
                 positions.BondsCode = trade.BondsCode;//债券编码
                 positions.TradeDate = trade.TradeDate;//交易日期
                 positions.NetCost = trade.NetPrace;//净价成本

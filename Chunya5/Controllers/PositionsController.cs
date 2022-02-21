@@ -31,7 +31,7 @@ namespace Chunya5.Controllers
             {
                 ViewBag.account = account;
                 positions = positions
-                    .Where(x => (x.Accout.Contains(account)));
+                    .Where(x => (x.Account.Contains(account)));
             }
             if (!string.IsNullOrEmpty(tradeDate.ToString()))
             {

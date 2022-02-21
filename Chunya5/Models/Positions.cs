@@ -24,7 +24,7 @@ namespace Chunya5.Models
         public bool IsDelete { get; set; } = false;
 
         [Required, Display(Name = "账户")]
-        public string Accout { get; set; } = "";
+        public string Account { get; set; } = "";
 
 
         [Required, Display(Name = "债券编码")]
@@ -35,32 +35,32 @@ namespace Chunya5.Models
         public DateTime TradeDate { get; set; }
 
         [Required,Display(Name = "净价成本")]
-        public Decimal NetCost { get; set; }
+        public decimal NetCost { get; set; }
 
         [Required, Display(Name = "利息成本")]
-        public Decimal InterestCost { get; set; }
+        public decimal InterestCost { get; set; }
 
         [Required, Display(Name = "当期应计利息")]
-        public Decimal AccInterest { get; set; }
+        public decimal AccInterest { get; set; }
 
         [Required, Display(Name = "已计提未实现利息收入")]
 
-        public Decimal AccUninterestImcome { get; set; }
+        public decimal AccUninterestImcome { get; set; }
 
         [Required, Display(Name = "已实现利息收入")]
 
-        public Decimal RealizedInterestIncome { get; set; }
+        public decimal RealizedInterestIncome { get; set; }
 
         [Required, Display(Name = "利息收入合计")]
-        public Decimal TotalInterestIncome { get; set; }
+        public decimal TotalInterestIncome { get; set; }
 
         [Required, Display(Name = "买卖盈亏")]
-        public Decimal TradingProloss { get; set; }
+        public decimal TradingProloss { get; set; }
         [Required, Display(Name = "浮动盈亏")]
-        public Decimal FloatingPl { get; set; }
+        public decimal FloatingPl { get; set; }
 
         [Required, Display(Name = "持有面额")]
-        public Decimal DenominattonHeld { get; set; }
+        public decimal DenominattonHeld { get; set; }
 
     }
 }
