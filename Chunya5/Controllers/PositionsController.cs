@@ -45,23 +45,7 @@ namespace Chunya5.Controllers
             return View(await PageList<Positions>.CreatPageListAsync(positions, page, pageSize));
         }
 
-        // GET: Positions/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var position = await _context.Positions
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (position == null)
-            {
-                return NotFound();
-            }
-
-            return View(position);
-        }
+       
 
         // GET: Positions/Create
         public IActionResult Create()

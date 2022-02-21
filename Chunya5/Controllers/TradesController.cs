@@ -71,7 +71,7 @@ namespace Chunya5.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Account,BondsCode,TradeDate,Direction,Deno,NetPrace,Accrued,Amount")] Trade trade)
+        public async Task<IActionResult> Create(Trade trade)
         {
             if (ModelState.IsValid)
             {
@@ -171,28 +171,9 @@ namespace Chunya5.Controllers
             return _context.Trade.Any(e => e.Id == id);
         }
 
-        public JsonResult CheckBonds(string bondsCode)
-        {
+        
 
-            var result = _context.Bonds.Any(x => x.BondsCode == bondsCode);
-
-            return Json(!result);
-
-        }
-
-        public decimal CalculateInterest()
-        {
-            //计算日
-            //起息日
-            //期限
-            //交易面额
-            //利率
-
-            //上一个付息日
-
-
-            return 0;
-        }
+        
         
     }
 }
