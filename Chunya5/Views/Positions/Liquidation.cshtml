@@ -1,83 +1,57 @@
-﻿@model PageList<Positions>
-@*@{
-    ViewData["Title"] = "Index";
-    }*@
+﻿@model LiquidationViewModel
+@{
+    ViewData["Title"] = "清算";
+    }
 
-<h1>资产持仓信息查询</h1>
+<h1>@Model.Account</h1>
 
-@*<p>
-    <a asp-action="Create">Create New</a>
-    </p>*@
 
-<div style="display:flex; ">
-    <form asp-action="index" asp-route-page=1>
-        <div class="input-group mb-3" style="width:500px">
-            <input type="text" class="form-control" placeholder="请输入账户" name="account" id="tradeAccount">
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="date" class="form-control" placeholder="请输入时间"  name="tradeDate" id="tradeDate">
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary"  type="submit">搜索</button>
-            </div>
-
-        </div>
-    </form>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-    <div class="input-group-append">
-        <a class="btn btn-outline-secondary"
-           onclick="liquidation()"
-           >
-            清算
-        </a>
-    </div>
-
-</div>
 
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model[0].Accout)
+                @Html.DisplayNameFor(model => model.Positions[0].Accout)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].BondsCode)
+                @Html.DisplayNameFor(model => model.Positions[0].BondsCode)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].TradeDate)
+                @Html.DisplayNameFor(model => model.Positions[0].TradeDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].NetCost)
+                @Html.DisplayNameFor(model => model.Positions[0].NetCost)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].InterestCost)
+                @Html.DisplayNameFor(model => model.Positions[0].InterestCost)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].AccInterest)
+                @Html.DisplayNameFor(model => model.Positions[0].AccInterest)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].AccUninterestImcome)
+                @Html.DisplayNameFor(model => model.Positions[0].AccUninterestImcome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].RealizedInterestIncome)
+                @Html.DisplayNameFor(model => model.Positions[0].RealizedInterestIncome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].TotalInterestIncome)
+                @Html.DisplayNameFor(model => model.Positions[0].TotalInterestIncome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].TradingProloss)
+                @Html.DisplayNameFor(model => model.Positions[0].TradingProloss)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].FloatingPl)
+                @Html.DisplayNameFor(model => model.Positions[0].FloatingPl)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model[0].DenominattonHeld)
+                @Html.DisplayNameFor(model => model.Positions[0].DenominattonHeld)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Positions)
         {
             <tr>
                 <td>
@@ -129,13 +103,13 @@
         <li class="page-item">
             <a class="page-link"
                asp-action="index"
-               asp-route-page=@(Model.CurrentPage-1)
+               asp-route-page=@(Model.Positions.CurrentPage-1)
                asp-route-account=@ViewBag.account
                asp-route-date=@ViewBag.date aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
-        @for (var i = 0; i < Model.TotalPages; i++)
+        @for (var i = 0; i < Model.Positions.TotalPages; i++)
         {
             <li class="page-item">
                 <a class="page-link"
@@ -148,7 +122,7 @@
         <li class="page-item">
             <a class="page-link"
                asp-action="index"
-               asp-route-page=@(Model.CurrentPage+1)
+               asp-route-page=@(Model.Positions.CurrentPage+1)
                asp-route-account=@ViewBag.account
                asp-route-date=@ViewBag.date aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
@@ -156,21 +130,3 @@
         </li>
     </ul>
 </nav>
-
-<script>
-    function liquidation(){
-        let tradeAccount = document.getElementById("tradeAccount").value;
-        let tradeDate = document.getElementById("tradeDate").value;
-        $.ajax({
-            url:"/Positions/Liquidation",
-            type:"GET",
-            data:{"account":tradeAccount,"liDate":tradeDate,"page":1},
-            success: function(data){
-                console.log(data)
-            },
-            error: function(){
-               alert("error")
-            }
-        });
-    }
-</script>

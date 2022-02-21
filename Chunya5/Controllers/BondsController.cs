@@ -39,6 +39,8 @@ namespace Chunya5.Controllers
             return View(await PageList<Bonds>.CreatPageListAsync(bonds, page, pageSize));
         }
 
+
+
         public async Task<IActionResult> GetBondsByCode(string? code)
         {
             //if (!String.IsNullOrWhiteSpace(code))

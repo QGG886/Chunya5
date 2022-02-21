@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Chunya5.Data;
 using Chunya5.Models;
 using Chunya5.Helper;
+using Chunya5.ViewModels;
 
 namespace Chunya5.Controllers
 {
@@ -22,21 +23,21 @@ namespace Chunya5.Controllers
         }
 
         // GET: Positions
-        public async Task<IActionResult> Index(string account, DateTime? date, int page)
+        public async Task<IActionResult> Index(string account, DateTime? tradeDate, int page,bool isSearch)
         {
             var pageSize = 5;
-            var positions = _context.Positions.Where(x => x.IsDelete == false) as IQueryable<Positions>; ;
+            var positions = _context.Positions.Where(x => x.IsDelete == false) as IQueryable<Positions>;
             if (!String.IsNullOrEmpty(account))
             {
                 ViewBag.account = account;
                 positions = positions
                     .Where(x => (x.Accout.Contains(account)));
             }
-            if (!string.IsNullOrEmpty(date.ToString()))
+            if (!string.IsNullOrEmpty(tradeDate.ToString()))
             {
-                ViewBag.date = date;
+                ViewBag.date = tradeDate;
                 positions = positions
-                    .Where(x => (x.TradeDate.ToString().Contains(date.ToString())));
+                    .Where(x => (x.TradeDate.ToString().Contains(tradeDate.ToString())));
             }
             if (page == 0) page = 1;
 
@@ -44,8 +45,27 @@ namespace Chunya5.Controllers
             
             return View(await PageList<Positions>.CreatPageListAsync(positions, page, pageSize));
         }
+        public async Task<IActionResult> Liquidation(string account, DateTime liDate, int page)
+        {
+            
 
-       
+            var pageSize = 5;
+            var positions = _context.Positions.Where(x => x.IsDelete == false) as IQueryable<Positions>;
+            if (page == 0) page = 1;
+            positions.OrderBy(x => x.TradeDate);
+
+            var moneyFlows = new List<MoneyFlow>();
+
+            var model = new LiquidationViewModel(
+                account,
+                0,
+                0,
+                0, 
+                moneyFlows, 
+                await PageList<Positions>.CreatPageListAsync(positions, page, pageSize));
+            return View(model);
+        }
+
 
         // GET: Positions/Create
         public IActionResult Create()
