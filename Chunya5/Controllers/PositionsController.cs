@@ -45,26 +45,7 @@ namespace Chunya5.Controllers
             
             return View(await PageList<Positions>.CreatPageListAsync(positions, page, pageSize));
         }
-        public async Task<IActionResult> Liquidation(string account, DateTime liDate, int page)
-        {
-            
-
-            var pageSize = 5;
-            var positions = _context.Positions.Where(x => x.IsDelete == false) as IQueryable<Positions>;
-            if (page == 0) page = 1;
-            positions.OrderBy(x => x.TradeDate);
-
-            var moneyFlows = new List<MoneyFlow>();
-
-            var model = new LiquidationViewModel(
-                account,
-                0,
-                0,
-                0, 
-                moneyFlows, 
-                await PageList<Positions>.CreatPageListAsync(positions, page, pageSize));
-            return View(model);
-        }
+        
 
 
         // GET: Positions/Create

@@ -22,15 +22,6 @@
 
         </div>
     </form>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-    <div class="input-group-append">
-        <a class="btn btn-outline-secondary"
-           onclick="liquidation()"
-           >
-            清算
-        </a>
-    </div>
-
 </div>
 
 
@@ -156,21 +147,3 @@
         </li>
     </ul>
 </nav>
-
-<script>
-    function liquidation(){
-        let tradeAccount = document.getElementById("tradeAccount").value;
-        let tradeDate = document.getElementById("tradeDate").value;
-        $.ajax({
-            url:"/Positions/Liquidation",
-            type:"GET",
-            data:{"account":tradeAccount,"liDate":tradeDate,"page":1},
-            success: function(data){
-                console.log(data)
-            },
-            error: function(){
-               alert("error")
-            }
-        });
-    }
-</script>

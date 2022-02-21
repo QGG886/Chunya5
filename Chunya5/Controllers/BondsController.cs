@@ -19,7 +19,7 @@ namespace Chunya5.Controllers
         public async Task<IActionResult> Index(string? bondsCode,string? bondsName,int page)
         {
             var pageSize = 5;
-            var bonds = _context.Bonds.Where(x=>x.IsDelete == false) as IQueryable<Bonds>; ;
+            var bonds = _context.Bonds.Where(x => x.IsDelete == false);
             if (!String.IsNullOrEmpty(bondsCode))
             {
                 ViewBag.bondsCode = bondsCode;

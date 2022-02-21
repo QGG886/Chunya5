@@ -1,11 +1,26 @@
 ﻿@model LiquidationViewModel
 @{
-    ViewData["Title"] = "清算";
+    ViewData["Title"] = "Index";
     }
 
-<h1>@Model.Account</h1>
+<h1>日结清算操作</h1>
 
 
+
+<div style="display:flex; ">
+    <form asp-action="index" asp-route-page=1>
+        <div class="input-group mb-3" style="width:500px">
+            <input type="text" class="form-control" placeholder="请输入账户" name="account" id="tradeAccount">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="date" class="form-control" placeholder="请输入时间"  name="tradeDate" id="tradeDate">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary"  type="submit">清算</button>
+            </div>
+
+        </div>
+    </form>
+</div>
 
 
 <table class="table">
