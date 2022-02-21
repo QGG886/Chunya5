@@ -27,8 +27,7 @@ namespace Chunya5.Models
         public double Rate { get; set; }
 
         public bool IsDelete { get; set; } = false;
-        public bool AllowDelete { get; set; } = true;
-        public bool AllowEdit { get; set; } = true;
+        
 
         [Required(ErrorMessage = "起息日不能为空"), Display(Name = "起息日")]
         [DisplayFormat(DataFormatString = "{0:yyyy年MM月dd日}")]

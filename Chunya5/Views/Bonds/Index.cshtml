@@ -7,19 +7,30 @@
 <h1>债券信息维护及查询</h1>
 
 <p>
-    <a asp-action="Create"  class="btn btn-primary">添加债券</a>
+    <a asp-action="Create" class="btn btn-primary">添加债券</a>
 </p>
-<form asp-action="index" asp-route-page=1>
-    <div class="input-group mb-3" style="width:500px">
-        <input type="text" class="form-control" placeholder="请输入债券编码查询" name="bondsCode">
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="text" class="form-control" placeholder="请输入债券名称查询" name="bondsName">
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" style="border-radius:0 2px 2px 0" type="submit">搜索</button>
+<div style="display:flex; ">
+    <form asp-action="index" asp-route-page=1>
+        <div class="input-group mb-3" style="width:500px">
+            <input type="text" class="form-control" placeholder="请输入债券编码查询" value=@ViewBag.BondsCode name="bondsCode">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" class="form-control" placeholder="请输入债券名称查询" value=@ViewBag.BondsName name="bondsName">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary"  type="submit">搜索</button>
+            </div>
+
         </div>
+    </form>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="input-group-append">
+        <a class="btn btn-outline-secondary"
+           asp-action="index"
+           asp-route-page=1 type="button">
+            恢复
+        </a>
     </div>
-</form>
+</div>
 
 <table class="table">
     <thead>
@@ -91,7 +102,7 @@
                     @Html.DisplayFor(modelItem => item.Frequency)
                 </td>
                 <td>
-                    <a asp-action="Edit" class="btn btn-info" asp-route-id="@item.Id">编辑</a>
+                    <a asp-action="Edit" class="btn btn-info " asp-route-id="@item.Id">编辑</a>
                     <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">删除</a>
                 </td>
             </tr>
@@ -100,18 +111,18 @@
 </table>
 <nav style="float:right;">
     <ul class="pagination">
-       @if (Model.HasPrevious)
-       {
+        @if (Model.HasPrevious)
+        {
             <li class="page-item">
-            <a class="page-link"
+                <a class="page-link"
                asp-action="index"
                asp-route-page=@(Model.CurrentPage-1)
                asp-route-bondsCode=@ViewBag.bondsCode
                asp-route-bondsName=@ViewBag.bondsName aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-       }
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        }
         @for (var i = 0; i < Model.TotalPages; i++)
         {
             <li class="page-item">
@@ -125,14 +136,14 @@
         @if (Model.HasNext)
         {
             <li class="page-item">
-            <a class="page-link"
+                <a class="page-link"
                asp-action="index"
                asp-route-page=@(Model.CurrentPage+1)
                asp-route-bondsCode=@ViewBag.bondsCode
                asp-route-bondsName=@ViewBag.bondsName aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
         }
     </ul>
 </nav>

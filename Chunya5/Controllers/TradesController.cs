@@ -22,7 +22,7 @@ namespace Chunya5.Controllers
         }
 
         // GET: Trades
-        public async Task<IActionResult> Index(string? tradeAccount, DateTime tradeDate, int page)
+        public async Task<IActionResult> Index(string tradeAccount, DateTime tradeDate, int page)
         {
             var pageSize = 5;
             var trades = _context.Trade.Where(x=>x.IsDelete == false) as IQueryable<Trade>;
@@ -76,6 +76,7 @@ namespace Chunya5.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(trade);
+                
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -91,6 +92,7 @@ namespace Chunya5.Controllers
             }
 
             var trade = await _context.Trade.FindAsync(id);
+            
             if (trade == null)
             {
                 return NotFound();
@@ -115,6 +117,7 @@ namespace Chunya5.Controllers
                 try
                 {
                     _context.Update(trade);
+                    
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -157,6 +160,7 @@ namespace Chunya5.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var trade = await _context.Trade.FindAsync(id);
+            
             _context.Trade.Remove(trade);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -189,5 +193,6 @@ namespace Chunya5.Controllers
 
             return 0;
         }
+        
     }
 }

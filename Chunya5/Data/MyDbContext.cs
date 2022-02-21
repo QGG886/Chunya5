@@ -11,10 +11,9 @@ namespace Chunya5.Data
 
         }
 
-        public DbSet<Bonds> Bonds { get; set; }
-
-        public DbSet<Trade> Trade { get; set; }
-        public DbSet<Positions> Positions { get; set; }
+        public DbSet<Bonds>? Bonds { get; set; }
+        public DbSet<Trade>? Trade { get; set; }
+        public DbSet<Positions>? Positions { get; set; }
 
     }
 }

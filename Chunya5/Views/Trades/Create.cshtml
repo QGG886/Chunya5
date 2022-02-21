@@ -19,17 +19,17 @@
             </div>
             <div class="form-group mb-3 ">
                 <label asp-for="BondsCode" class="control-label"></label>
-                <input asp-for="BondsCode" class="form-control" id="BondsCode" onblur="getBonds($('#BondsCode').val())" />
-                <span asp-validation-for="BondsCode" class="text-danger"></span>
+                <input asp-for="BondsCode" class="form-control" id="BondsCode" />
+                <span id="bondsCodeValidation" asp-validation-for="BondsCode" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
                 <label asp-for="TradeDate" class="control-label"></label>
-                <input asp-for="TradeDate" type="date" class="form-control" />
+                <input asp-for="TradeDate" type="date" class="form-control" id="tradeDate" />
                 <span asp-validation-for="TradeDate" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
                 <label asp-for="Direction" class="control-label"></label>
-                <select asp-for="TradeDate" class="form-control">
+                <select asp-for="Direction" class="form-control">
                     <option value="买入">买入</option>
                     <option value="卖出">卖出</option>
                 </select>
@@ -38,7 +38,7 @@
             <div class="form-group mb-3">
                 <label asp-for="Deno" class="control-label"></label>
                 <div class="input-group">
-                    <input asp-for="Deno" type="text" class="form-control">
+                    <input asp-for="Deno" type="text" class="form-control" id="deno">
                     <div class="input-group-prepend" style="border-radius:2px 0 0 2px">
                         <span class="input-group-text">X100</span>
                     </div>
@@ -47,17 +47,21 @@
             </div>
             <div class="form-group mb-3">
                 <label asp-for="NetPrace" class="control-label"></label>
-                <input asp-for="NetPrace" class="form-control" />
+                <input asp-for="NetPrace" class="form-control" id="netPrace"  onblur="getBonds($('#BondsCode').val())"/>
                 <span asp-validation-for="NetPrace" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
                 <label asp-for="Accrued" class="control-label"></label>
-                <input asp-for="Accrued" class="form-control" />
+                <input asp-for="Accrued" class="form-control" id="accrued" disabled/>
                 <span asp-validation-for="Accrued" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
+                <label class="control-label" for="overheadPrice">全价</label>
+                <input class="form-control" name="overheadPrice" id="overheadPrice" disabled />
+            </div>
+            <div class="form-group mb-3">
                 <label asp-for="Amount" class="control-label"></label>
-                <input asp-for="Amount" class="form-control" />
+                <input asp-for="Amount" class="form-control" id="amount" disabled/>
                 <span asp-validation-for="Amount" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
@@ -76,11 +80,67 @@
     function getBonds(BondsCode){
         //(交易日-上一个付息日)*交易面额*年利率/365
         //alert(BondsCode);
-        $.get("/Bonds/GetBondsByCode",{
-            code: BondsCode
-        },function(data){
-            console.log("Data Loaded: " + data.bondsName);
+        //let bondsCodeValidation = document.getElementById("bondsCodeValidation");
+        //$.get("/Bonds/GetBondsByCode",{
+        //    code: BondsCode
+        //},function(data){
+        //    console.log(bondsCodeValidation)
+        //    console.log(data);
+        //});
+        //alert("abc");
+        $.ajax({
+            url:"/Bonds/GetBondsByCode",
+            type:"GET",
+            data:{"code":BondsCode},
+            success: function(data){
+                //alert(data.bondsCode);
+                console.log(data)
+                let startDate = new Date(data.startDate)
+                let tradeDate = new Date(document.getElementById("tradeDate").value)
+                let dayInterest = data.rate/365
+                let days = 0
+                tradeDate.setHours(0)
+
+                //交易面额
+                let denoValue = document.getElementById("deno").value
+                //净价
+                let netPraceValue = document.getElementById("netPrace").value
+                //应计利息
+                let accrued = document.getElementById("accrued")
+                //全价
+                let overheadPrice = document.getElementById("overheadPrice")
+                //结算金额
+                let amount = document.getElementById("amount")
+                if(tradeDate>startDate)
+                {
+                    if(tradeDate.getFullYear()>startDate.getFullYear())
+                    {
+                        let temDate = new Date(tradeDate.getFullYear()+"/1/1")
+                        console.log("今年起息日"+temDate) 
+                        days = (tradeDate-temDate)/86400000
+                        
+                    }
+                    else{
+                        days = (tradeDate-startDate)/86400000
+                    }
+                    accrued.value = (days*dayInterest*denoValue).toFixed(2)
+                    overheadPrice.value = (netPraceValue*1+days*dayInterest*1).toFixed(2)
+                    amount.value = (netPraceValue*denoValue+days*dayInterest*denoValue).toFixed(2)
+
+
+                }
+                else
+                {
+
+                    alert("交易时间不合法，在起息日之前")
+                    console.log(tradeDate.toUTCString(),startDate.toUTCString())
+                }
+            },
+            error: function(){
+                alert("没有相关债券信息");
+            }
         });
     }
+
 </script>
 

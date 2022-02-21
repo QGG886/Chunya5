@@ -51,10 +51,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zaXRpb25zXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Work/Chunya5/Chunya5/Views/Positions/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zaXRpb25zXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/Work/Chunya5/Chunya5/Views/Positions/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zaXRpb25zXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -77,10 +73,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/Work/Chunya5/Chunya5/Views/Trades/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhZGVzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Work/Chunya5/Chunya5/Views/Trades/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhZGVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Work/Chunya5/Chunya5/Views/Trades/Edit.cshtml]
