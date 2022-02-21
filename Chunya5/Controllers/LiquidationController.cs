@@ -2,6 +2,7 @@
 using Chunya5.Helper;
 using Chunya5.Models;
 using Chunya5.ViewModels;
+using Chunya5.Servers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chunya5.Controllers
@@ -9,10 +10,12 @@ namespace Chunya5.Controllers
     public class LiquidationController : Controller
     {
         private readonly MyDbContext _context;
+        private readonly LiquidationServer liquidationServer;
 
-        public LiquidationController(MyDbContext myDbContext)
+        public LiquidationController(MyDbContext myDbContext, LiquidationServer liquidationServer)
         {
             this._context = myDbContext ?? throw new ArgumentNullException(nameof(myDbContext));
+            this.liquidationServer = liquidationServer ?? throw new ArgumentNullException(nameof(liquidationServer));
         }
         public async Task<IActionResult> Index(string account, DateTime liDate, int page)
         {
@@ -176,31 +179,7 @@ namespace Chunya5.Controllers
             return positionsList;
 
         }
-        /// <summary>
-        /// 计算上一个付息日
-        /// </summary>
-        /// <param name="startDate">起息日</param>
-        /// <param name="endDate">到期日</param>
-        /// <param name="calculateDate">交易日</param>
-        /// <returns>上一个付息日</returns>
-        private DateTime CalculateLastInterestDate(DateTime startDate,DateTime endDate,DateTime calculateDate)
-        {
-            DateTime LastInterestDate = new();
-            if(calculateDate < startDate || calculateDate >= endDate)
-            {
-                calculateDate.AddDays(1);
-                return calculateDate;
-            }
-            else if(calculateDate >= startDate && calculateDate <new DateTime(startDate.Year+1,1,1))
-            {
-                LastInterestDate = startDate;
-            }
-            else
-            {
-                LastInterestDate = new DateTime(calculateDate.Year, 1, 1);
-            }
-            return LastInterestDate;
-        }
+        
 
 
 

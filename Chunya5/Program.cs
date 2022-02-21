@@ -1,4 +1,5 @@
 using Chunya5.Data;
+using Chunya5.Servers;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,7 @@ builder.Services.AddDbContextPool<MyDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("mysqlDbconn"),
         new MySqlServerVersion(new Version(8, 0, 26)));
 });
+builder.Services.AddScoped<LiquidationServer>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
