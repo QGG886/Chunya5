@@ -46,7 +46,7 @@ namespace Chunya5.Controllers
             if (page == 0) page = 1;
             positions.OrderBy(x => x.TradeDate);
 
-            var moneyFlows = new List<MoneyFlow>();
+            var moneyFlows = _context.MoneyFlows.ToList();
 
             var model = new LiquidationViewModel()
             {
