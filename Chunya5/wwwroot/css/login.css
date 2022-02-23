@@ -7,8 +7,12 @@
 }
 
 body {
-    background-color: steelblue;
     color: #fff;
+/*    background-image:;*/
+    background-image: url("../img/loginbg.jpg") ;
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:cover;
     font-family: "Muli",sans-serif;
     display: flex;
     justify-content: center;

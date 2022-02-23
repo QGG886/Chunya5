@@ -16,7 +16,7 @@
     </style>
 </head>
 <body>
-    <header>
+    <header style="background-color:#66bfff;">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
@@ -41,7 +41,7 @@
                         </li>
                         @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Statement" asp-action="Index">报表</a>
-                        </li>*@
+                            </li>*@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
                                 报表
@@ -64,14 +64,15 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted" style="margin-top:60px">
+    @*<footer class="border-top footer text-muted" style="margin-top:60px">
         <div class="container">
-            &copy; 2022 - Chunya5 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        &copy; 2022 - Chunya5 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
-    <script src="~/lib/jquery/jquery.slim.js"></script>
-    <script src="~/lib/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js" ></script>
-    
+        </footer>*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @*<script src="~/lib/jquery/jquery.slim.js"></script>*@
+    <script src="~/lib/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
