@@ -24,13 +24,13 @@ namespace Chunya5.Servers
             //		Date date = 交易.日期;
             isHas = true;
             var trade = _context.Trade.Where(x => x.Account == account && x.TradeDate <= date)
-                .OrderBy(x => x.TradeDate).First();
-            if (trade == null)
+                .OrderBy(x => x.TradeDate).ToList();
+            if (trade.Count == 0)
             {
                 isHas = false;
                 return new DateTime();
             }
-            return trade.TradeDate;
+            return trade[0].TradeDate;
         }
 
         /// <summary>
@@ -42,6 +42,10 @@ namespace Chunya5.Servers
         public List<Positions> SearchPositions(string account, DateTime date)
         {
             var positions = _context.Positions.Where(x => x.Account == account && x.TradeDate == date).ToList();
+            if (positions == null)
+            {
+                return new List<Positions>();
+            }
             return positions;
 
         }
@@ -52,16 +56,25 @@ namespace Chunya5.Servers
         /// <param name="account"></param>
         /// <param name="date"></param>
         /// <returns></returns>
-        public DateTime SearchRecentlyOpenDate(string account, DateTime date)
+        public DateTime SearchRecentlyOpenDate(string account, DateTime date, out Boolean dateAvailable)
         {
             //		select from 持仓 where 账户名称 = 账户名称 , 日期 <= date order by 日期 desc limit 1;
             //		if(持仓.isEmpty) return null;
             //		Date date = 持仓.日期;
-
+            DateTime recentlyOpenDate = new DateTime();
             var time = _context.Positions.Where(x => x.Account == account && x.TradeDate <= date)
-                .OrderByDescending(x => x.TradeDate).First().TradeDate;
+                .OrderByDescending(x => x.TradeDate).ToList();
+            if (time.Count == 0)
+            {
+                dateAvailable = false;
+            }
+            else
+            {
+                dateAvailable = true;
+                recentlyOpenDate = time[0].TradeDate;
+            }
 
-            return time;
+            return recentlyOpenDate;
         }
 
         /// <summary>
@@ -73,7 +86,7 @@ namespace Chunya5.Servers
         public int CalculateDays(DateTime startTime, DateTime endTime)
         {
 
-            int days = endTime.Subtract(startTime).Days;
+            int days = startTime.Subtract(endTime).Days;
 
             return days;
         }
@@ -87,7 +100,7 @@ namespace Chunya5.Servers
         /// <returns></returns>
         public List<Trade> SearchTrade(string account, DateTime data)
         {
-            var trades = _context.Trade.Where(x => x.Account == account && x.TradeDate <= data).ToList();
+            var trades = _context.Trade.Where(x => x.Account == account && x.TradeDate == data).ToList();
             return trades;
         }
 
@@ -178,24 +191,29 @@ namespace Chunya5.Servers
                 decimal netPrace = 0;//净价
                 decimal accrued = 0;//应计利息
                 decimal amount = 0; //结算金额
-
+                string account = "";
+             
                 foreach (var item in sameCodeTrades)
                 {
                     if (item.Direction == "买入")
                     {
+                        decimal tempDeno = deno; //原deno
                         deno += item.Deno;
-                        netPrace += item.NetPrace * item.Deno * 100;
+                        //netPrace += item.NetPrace * item.Deno * 100;
+                        netPrace = (netPrace * tempDeno + item.Deno * item.NetPrace) / deno;
                         accrued += item.Accrued;
                         amount += item.Amount;
 
                     }
                     else
                     {
+                        decimal tempDeno = deno; //原deno
                         deno -= item.Deno;
-                        netPrace -= item.NetPrace * item.Deno * 100;
+                        netPrace = (netPrace * tempDeno - item.Deno * item.NetPrace) / (deno > 0 ? deno : -deno);
                         accrued -= item.Accrued;
                         amount -= item.Amount;
                     }
+                    account = item.Account;
 
                 }
                 if (deno >= 0)
@@ -203,10 +221,15 @@ namespace Chunya5.Servers
                     direction = "买入";
                 }
                 else
+                {
                     direction = "卖出";
+                    deno *= -1;
+                    netPrace *= -1;
+                    accrued *= -1;
+                    amount *= -1;
+                }
 
-                netPrace = netPrace / deno > 0 ? netPrace / deno : netPrace / deno * -1;
-
+                trade.Account = account;
                 trade.Direction = direction;
                 trade.Deno = deno;
                 trade.NetPrace = netPrace;
@@ -239,6 +262,7 @@ namespace Chunya5.Servers
 
             //获取债券数据字典
             List<string> bondsCode = new List<string>();
+
             foreach (var positionItem in positions)
             {
                 if (!bondsCode.Contains(positionItem.BondsCode))
@@ -264,18 +288,138 @@ namespace Chunya5.Servers
 
                 bondsDictionary.Add(bondsItem.BondsCode, bondsItem);
             }
+            positions = PayInterest(positions, bondsDictionary);
 
+            //封装交易字典和持仓字典
+            Dictionary<string, Trade> tradeDictionary = new Dictionary<string, Trade>();
+            Dictionary<string, Positions> positionsDictionary = new Dictionary<string, Positions>();
+            foreach (Trade tradeItem in mergeTrade)
+            {
+                tradeDictionary.Add(tradeItem.BondsCode, tradeItem);
+            }
+            foreach (Positions positionsItem in positions)
+            {
+                positionsDictionary.Add(positionsItem.BondsCode, positionsItem);
 
-            // TODO
-            // 付息操作
+            }
+            List<Positions> positionList = new List<Positions>();
+            foreach (string bondsItem in bondsCode)
+            {
+                // 持仓表中无持仓数据，而合并后交易条目有买
+                if (tradeDictionary.ContainsKey(bondsItem) && (!positionsDictionary.ContainsKey(bondsItem)))
+                {
+                    //获取债券数据字典
+                    Bonds tempBonds = bondsDictionary[bondsItem];
+                    Trade tradeItem = tradeDictionary[bondsItem];
+                    Positions firstPosition = new Positions();
+                    //开始赋值
+                    firstPosition.Account = tradeItem.Account;
+                    firstPosition.BondsCode = tradeItem.BondsCode;
+                    firstPosition.TradeDate = tradeItem.TradeDate;
+                    firstPosition.NetCost = tradeItem.NetPrace * tradeItem.Deno;
+                    firstPosition.InterestCost = tradeItem.Accrued;
+                    DateTime lastInterestDate = CalculateLastInterestDate(tempBonds.StartDate, tempBonds.EndDate, tradeItem.TradeDate);
+                    decimal accInterest = (Convert.ToDecimal(CalculateDays(tradeItem.TradeDate, lastInterestDate)) + 1) * tradeItem.Deno * Convert.ToDecimal(tempBonds.Rate) / 365;
+                    firstPosition.AccInterest = accInterest;
+                    firstPosition.AccUninterestImcome = accInterest - firstPosition.InterestCost;
+                    firstPosition.RealizedInterestIncome = 0;
+                    firstPosition.TotalInterestIncome = firstPosition.AccUninterestImcome;
+                    firstPosition.TradingProloss = 0;
+                    firstPosition.DenominattonHeld = tradeItem.Deno;
+                    positionList.Add(firstPosition);
+                }
+                //持仓表中有持仓数据，而合并后交易条目无
+                else if (!tradeDictionary.ContainsKey(bondsItem) && positionsDictionary.ContainsKey(bondsItem))
+                {
+                    Positions tempPositions = positionsDictionary[bondsItem];
+                    Bonds tempBonds = bondsDictionary[bondsItem];
+                    Positions firstPosition = new Positions();
+                    if (date >= tempBonds.EndDate)
+                    {
+                        tempPositions.TradeDate = date;
+                        positionList.Add(tempPositions);
+                        continue;
+                    }
+                    //开始赋值
+                    firstPosition.Account = tempPositions.Account;
+                    firstPosition.BondsCode = tempPositions.BondsCode;
+                    firstPosition.TradeDate = date;
+                    firstPosition.NetCost = tempPositions.NetCost;
+                    firstPosition.InterestCost = tempPositions.InterestCost;
 
+                    DateTime lastInterestDate = CalculateLastInterestDate(tempBonds.StartDate, tempBonds.EndDate, date);
+                    decimal accInterest = (Convert.ToDecimal(CalculateDays(date, lastInterestDate)) + 1) * tempPositions.DenominattonHeld  * Convert.ToDecimal(tempBonds.Rate) / 365;
+                    firstPosition.AccInterest = accInterest;
+                    firstPosition.AccUninterestImcome = accInterest - firstPosition.InterestCost;
+                    firstPosition.RealizedInterestIncome = tempPositions.RealizedInterestIncome;
+                    firstPosition.TotalInterestIncome = firstPosition.AccUninterestImcome + firstPosition.RealizedInterestIncome;
+                    firstPosition.TradingProloss = tempPositions.TradingProloss;
+                    firstPosition.DenominattonHeld = tempPositions.DenominattonHeld;
+                    positionList.Add(firstPosition);
+                }
+                // 持仓表中有持仓数据，而合并后交易条目有买方向数据
+                // 持仓表中有持仓数据，而合并后交易条目有卖方向数据
+                else
+                {
+                    if (tradeDictionary[bondsItem].Direction == "买入")
+                    {
 
-            //		持仓表中有持仓数据，而合并后交易条目无
+                        Positions tempPositions = positionsDictionary[bondsItem];
+                        Bonds tempBonds = bondsDictionary[bondsItem];
+                        Positions firstPosition = new Positions();
+                        Trade tempTrade = tradeDictionary[bondsItem];
+                        //开始赋值
+                        firstPosition.Account = tempPositions.Account;
+                        firstPosition.BondsCode = tempPositions.BondsCode;
+                        firstPosition.TradeDate = date;
+                        firstPosition.DenominattonHeld = tempPositions.DenominattonHeld + tempTrade.Deno;
 
-            //		持仓表中有持仓数据，而合并后交易条目有买方向数据
+                        firstPosition.NetCost = tempPositions.NetCost + tempTrade.Deno * tempTrade.NetPrace;
+                        firstPosition.InterestCost = tempPositions.InterestCost + tempTrade.Accrued;
 
-            //		持仓表中有持仓数据，而合并后交易条目有卖方向数据
+                        DateTime lastInterestDate = CalculateLastInterestDate(tempBonds.StartDate, tempBonds.EndDate, date);
+                        decimal accInterest = (Convert.ToDecimal(CalculateDays(date, lastInterestDate)) + 1) * firstPosition.DenominattonHeld * Convert.ToDecimal(tempBonds.Rate) / 365;
+                        firstPosition.AccInterest = accInterest;
 
+                        firstPosition.AccUninterestImcome = accInterest - firstPosition.InterestCost;
+                        firstPosition.RealizedInterestIncome = tempPositions.RealizedInterestIncome;
+                        firstPosition.TotalInterestIncome = firstPosition.AccUninterestImcome + firstPosition.RealizedInterestIncome;
+                        firstPosition.TradingProloss = tempPositions.TradingProloss;
+                        positionList.Add(firstPosition);
+                    }
+                    else
+                    {
+                        Positions tempPositions = positionsDictionary[bondsItem];
+                        Bonds tempBonds = bondsDictionary[bondsItem];
+                        Positions firstPosition = new Positions();
+                        Trade tempTrade = tradeDictionary[bondsItem];
+                        //开始赋值
+                        firstPosition.Account = tempPositions.Account;
+                        firstPosition.BondsCode = tempPositions.BondsCode;
+                        firstPosition.TradeDate = date;
+                        firstPosition.DenominattonHeld = tempPositions.DenominattonHeld - tempTrade.Deno;
+
+                        firstPosition.NetCost = (tempPositions.NetCost / tempPositions.DenominattonHeld) * firstPosition.DenominattonHeld;
+                        firstPosition.InterestCost = (tempPositions.InterestCost / tempPositions.DenominattonHeld) * firstPosition.DenominattonHeld;
+
+                        DateTime lastInterestDate = CalculateLastInterestDate(tempBonds.StartDate, tempBonds.EndDate, date);
+                        decimal accInterest = (Convert.ToDecimal(CalculateDays(date, lastInterestDate)) + 1) * firstPosition.DenominattonHeld * Convert.ToDecimal(tempBonds.Rate) / 365;
+                        firstPosition.AccInterest = accInterest;
+
+                        firstPosition.AccUninterestImcome = accInterest - firstPosition.InterestCost;
+                        //firstPosition.RealizedInterestIncome = tempPositions.RealizedInterestIncome;
+                        firstPosition.RealizedInterestIncome = tempPositions.RealizedInterestIncome +tempTrade.Accrued -tempPositions.InterestCost/tempPositions.DenominattonHeld *tempTrade.Deno;
+                        firstPosition.TotalInterestIncome = firstPosition.AccUninterestImcome + firstPosition.RealizedInterestIncome;
+                        firstPosition.TradingProloss = tempPositions.TradingProloss + tempTrade.NetPrace *tempTrade.Deno - tempPositions.NetCost/ tempPositions.DenominattonHeld*tempTrade.Deno;
+                        positionList.Add(firstPosition);
+
+                    }
+
+                }
+
+            }
+            _context.Positions.AddRange(positionList);
+            _context.SaveChanges();
         }
         /// <summary>
         /// 付息操作
@@ -331,24 +475,66 @@ namespace Chunya5.Servers
         /// <param name="caldate">计算日期</param>
         /// <param name="firstpositiondate">第一条持仓日期</param>
         /// <returns></returns>
-        //public Boolean FirstCalculatePositions(string account, DateTime caldate, out DateTime firstpositiondate)
-        //{
+        public Boolean FirstCalculatePositions(string account, DateTime caldate, out DateTime firstpositiondate)
+        {
 
-        //    Boolean isNull;
-        //    DateTime firstdate = SearchEarliestDate(account, caldate, out isNull);
-        //    firstpositiondate = firstdate;
+            Boolean isNull;
+            DateTime firstdate = SearchEarliestDate(account, caldate, out isNull);
+            firstpositiondate = firstdate;
 
-        //    if (isNull)
-        //    {
-        //        return false;
-        //    }
+            if (!isNull)
+            {
+                return false;
+            }
+            List<Trade> allTrades = SearchTrade(account, firstdate);
+            List<Trade> mergeTrades = MergeTrade(allTrades);
+            //获取债券数据字典
+            List<string> bondsCode = new List<string>();
+
+            foreach (Trade tradeItem in mergeTrades)
+            {
+
+                if (!bondsCode.Contains(tradeItem.BondsCode))
+                {
+                    bondsCode.Add(tradeItem.BondsCode);
+                }
+            }
+
+            List<Bonds> allBonds = _context.Bonds.Where(x => x.IsDelete == false && bondsCode.Contains(x.BondsCode)).ToList();
+
+            Dictionary<string, Bonds> bondsDictionary = new Dictionary<string, Bonds>();
+            foreach (Bonds bondsItem in allBonds)
+            {
+
+                bondsDictionary.Add(bondsItem.BondsCode, bondsItem);
+            }
+            List<Positions> positionList = new List<Positions>();
+            foreach (Trade tradeItem in mergeTrades)
+            {
+                Positions firstPosition = new Positions();
+                firstPosition.Account = tradeItem.Account;
+                firstPosition.BondsCode = tradeItem.BondsCode;
+                firstPosition.TradeDate = firstdate;
+                firstPosition.NetCost = tradeItem.NetPrace * tradeItem.Deno;
+                firstPosition.InterestCost = tradeItem.Accrued;
+                Bonds tempBonds = bondsDictionary[tradeItem.BondsCode];
+                DateTime lastInterestDate = CalculateLastInterestDate(tempBonds.StartDate, tempBonds.EndDate, firstdate);
 
 
+                decimal accInterest = (Convert.ToDecimal(CalculateDays(firstdate, lastInterestDate)) + 1) * tradeItem.Deno * Convert.ToDecimal(tempBonds.Rate) / 365;
+                firstPosition.AccInterest = accInterest;
+                firstPosition.AccUninterestImcome = accInterest - firstPosition.InterestCost;
+                firstPosition.RealizedInterestIncome = 0;
+                firstPosition.TotalInterestIncome = firstPosition.AccUninterestImcome;
+                firstPosition.TradingProloss = 0;
+                firstPosition.DenominattonHeld = tradeItem.Deno;
+                positionList.Add(firstPosition);
 
-
-
-
-
-        //}
+            }
+            _context.Positions.AddRange(positionList);
+            _context.SaveChanges();
+            return true;
+        }
     }
 }
+

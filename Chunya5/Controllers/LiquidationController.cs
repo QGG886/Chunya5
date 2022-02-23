@@ -22,36 +22,34 @@ namespace Chunya5.Controllers
 
             return View();
         }
-        public async Task<IActionResult> Calculate(string account, DateTime liDate, int page)
+        public IActionResult Calculate(string account, DateTime liDate, int page)
         {
-            var pageSize = 5;
-            var positions = _context.Positions.Where(x => x.IsDelete == false);
+            //int pageSize = 5;
+            //positions
+            Boolean dateAvailable;
 
-            //判断持仓表是否包含该账户的持仓记录
-            //if (!positions.Where(x => x.Accout == account).Any())
-            //{
-            //    //获取交易表中该账户的最早交易记录时间
-            //    var firstTradeDate = _context.Trade
-            //       .Where(x => x.Account == account && x.TradeDate <= liDate && x.IsDelete == false)
-            //       .OrderByDescending(x => x.TradeDate).First().TradeDate;
+            DateTime recentlyOpenDate= liquidationServer.SearchRecentlyOpenDate(account, liDate,out dateAvailable);
+            if (dateAvailable == false)
+            {
+                liquidationServer.FirstCalculatePositions(account, liDate,out recentlyOpenDate);
+            }
+            while (liquidationServer.CalculateDays(recentlyOpenDate, liDate) < 0)
+            {
+                recentlyOpenDate=recentlyOpenDate.AddDays(1);
+                liquidationServer.CalulatePosition(account, recentlyOpenDate);
+
+            }
+            List<Positions> positions = _context.Positions.Where(x => x.IsDelete == false &&x.Account == account &&x.TradeDate ==liDate).ToList();
 
 
-            //    //根据最早交易时间获取当天所有的交易记录
-            //    var firstTradeDateTrades = _context.Trade
-            //       .Where(x => x.TradeDate == firstTradeDate && x.Account == account && x.IsDelete == false).ToList();
-
-            //}
-
-
-            if (page == 0) page = 1;
-            positions.OrderBy(x => x.TradeDate);
 
             var moneyFlows = _context.MoneyFlows.ToList();
 
             var model = new LiquidationViewModel()
             {
                 Account = account,
-                Positions = await PageList<Positions>.CreatPageListAsync(positions, page, pageSize),
+                Positions= positions,
+                //Positions = await PageList<Positions>.CreatPageListAsync(positions, page, pageSize),
                 TradeProfit = 0,
                 InterestProfit = 0,
                 FloatProfit = 0,

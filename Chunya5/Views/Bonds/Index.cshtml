@@ -6,31 +6,35 @@
 
 <h1>债券信息维护及查询</h1>
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">添加债券</a>
-</p>
-<div style="display:flex; ">
-    <form asp-action="index" asp-route-page=1>
-        <div class="input-group mb-3" style="width:500px">
-            <input type="text" class="form-control" placeholder="请输入债券编码查询" value=@ViewBag.BondsCode name="bondsCode">
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="text" class="form-control" placeholder="请输入债券名称查询" value=@ViewBag.BondsName name="bondsName">
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary"  type="submit">搜索</button>
-            </div>
+<div style="display:flex;justify-content:space-between">
+    <div style="display:flex; ">
+        <form asp-action="index" asp-route-page=1>
+            <div class="input-group mb-3" style="width:500px">
+                <input type="text" class="form-control" placeholder="请输入债券编码查询" value=@ViewBag.BondsCode name="bondsCode">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" class="form-control" placeholder="请输入债券名称查询" value=@ViewBag.BondsName name="bondsName">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">搜索</button>
+                </div>
 
+            </div>
+        </form>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="input-group-append">
+            <a class="btn btn-outline-secondary"
+               asp-action="index"
+               asp-route-page=1 type="button">
+                恢复
+            </a>
         </div>
-    </form>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-    <div class="input-group-append">
-        <a class="btn btn-outline-secondary"
-           asp-action="index"
-           asp-route-page=1 type="button">
-            恢复
-        </a>
+
     </div>
+    <p style="margin-right:60px">
+        <a asp-action="Create" class="btn btn-primary">添加债券</a>
+    </p>
 </div>
+
 
 <table class="table">
     <thead>
@@ -102,7 +106,7 @@
                     @Html.DisplayFor(modelItem => item.Frequency)
                 </td>
                 <td>
-                    <a asp-action="Edit" class="btn btn-info " asp-route-id="@item.Id">编辑</a>
+                    <a asp-action="Edit" class="btn btn-info " asp-route-id="@item.Id" style="background-color:rgb(45,140,240);color:#fff;">编辑</a>
                     <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">删除</a>
                 </td>
             </tr>
