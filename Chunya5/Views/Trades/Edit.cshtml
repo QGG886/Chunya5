@@ -11,6 +11,7 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
             <div class="form-group mb-3 ">
                 <label asp-for="Account" class="control-label"></label>
                 <input asp-for="Account" class="form-control" />
@@ -37,7 +38,7 @@
             <div class="form-group mb-3">
                 <label asp-for="Deno" class="control-label"></label>
                 <div class="input-group">
-                    <input asp-for="Deno" type="text" class="form-control" id="deno">
+                    <input asp-for="Deno" value="@Model.Deno.ToString("0")" type="text" class="form-control" id="deno">
                     <div class="input-group-prepend" style="border-radius:2px 0 0 2px">
                         <span class="input-group-text">X100</span>
                     </div>
@@ -64,7 +65,7 @@
                 <span asp-validation-for="Amount" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
-                <input type="submit" value="创建" class="btn btn-primary" />
+                <input type="submit" value="编辑" class="btn btn-primary" />
             </div>
         </form>
     </div>

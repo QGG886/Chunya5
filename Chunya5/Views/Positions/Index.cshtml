@@ -70,6 +70,7 @@
     <tbody>
         @foreach (var item in Model)
         {
+            item.DenominattonHeld *= 100;
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Account)

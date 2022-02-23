@@ -27,7 +27,6 @@ namespace Chunya5.Models
         public string Direction { get; set; } = "";
         //交易面额
         [Required(ErrorMessage = "交易面额不能为空"), Display(Name = "交易面额")]
-        [Range(-1000,10000000,ErrorMessage ="范围不正确")]
         public decimal Deno { get; set; }
         //净价
         [Required, Display(Name = "净价")]
