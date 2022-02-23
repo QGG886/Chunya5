@@ -24,7 +24,7 @@ namespace Chunya5.Controllers
         // GET: Trades
         public async Task<IActionResult> Index(string tradeAccount, DateTime tradeDate, int page)
         {
-            var pageSize = 5;
+            var pageSize = 8;
             var trades = _context.Trade.Where(x=>x.IsDelete == false) as IQueryable<Trade>;
 
             if (!String.IsNullOrEmpty(tradeAccount))

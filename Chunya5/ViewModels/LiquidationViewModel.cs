@@ -12,7 +12,10 @@ namespace Chunya5.ViewModels
         
 
         //资产持仓表
-        public PageList<Positions> Positions { get; set; }
+        public List<Positions> Positions { get; set; }
+
+        //清算日
+        public DateTime LiDate { get; set; }
         //买卖盈亏
         public decimal TradeProfit { get; set; }
         //利息盈亏

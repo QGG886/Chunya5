@@ -6,19 +6,21 @@
 
 <h1>交易记录的查询与维护</h1>
 
-<p>
-    <a asp-action="Create"  class="btn btn-primary">添加交易记录</a>
-</p>
-<form asp-action="index" asp-route-page=1>
-    <div class="input-group mb-3" style="width:500px">
-        <input type="Date" class="form-control" placeholder="请输入交易时间" name="tradeDate">&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="text" class="form-control" placeholder="请输入交易账户" name="tradeAccount">&nbsp;&nbsp;&nbsp;&nbsp;
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" style="border-radius:0 2px 2px 0" type="submit">搜索</button>
-        </div>
-    </div>
-</form>
 
+<div style="display:flex;justify-content:space-between">
+    <form asp-action="index" asp-route-page=1>
+        <div class="input-group mb-3" style="width:500px">
+            <input type="Date" class="form-control" placeholder="请输入交易时间" name="tradeDate">&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" class="form-control" placeholder="请输入交易账户" name="tradeAccount">&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" style="border-radius:0 2px 2px 0" type="submit">搜索</button>
+            </div>
+        </div>
+    </form>
+    <p style="margin-right:83px">
+        <a asp-action="Create" class="btn btn-primary">添加交易记录</a>
+    </p>
+</div>
 <table class="table">
     <thead>
         <tr>

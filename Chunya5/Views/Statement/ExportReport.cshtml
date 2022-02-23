@@ -1,0 +1,52 @@
+﻿@model List<Statement>
+@{
+    ViewData["Title"] = "ExportReport";
+}
+
+<h1>@ViewBag.Account 在 @ViewBag.StartTime - @ViewBag.EndTime 的报表</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                债券盈亏
+            </th>
+            <th>
+                浮动盈亏
+            </th>
+            <th>
+                持仓盈亏
+            </th>
+            <th>
+                利息收入
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (var item in Model)
+            {
+                <td>@item.BondsCode</td>
+
+                <td>@item.FloatProfitLoss</td>
+
+                <td>@item.PositionsProfitLoss</td>
+                <td>@item.InterestIncome</td>
+            }
+            <td>
+                合计
+            </td>
+            <td>
+                0
+            </td>
+            <td>
+                0
+            </td>
+            <td>
+                0
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+

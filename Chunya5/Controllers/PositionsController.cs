@@ -23,7 +23,7 @@ namespace Chunya5.Controllers
         }
 
         // GET: Positions
-        public async Task<IActionResult> Index(string account, DateTime? tradeDate, int page,bool isSearch)
+        public async Task<IActionResult> Index(string account, DateTime tradeDate, int page,bool isSearch)
         {
             var pageSize = 5;
             var positions = _context.Positions.Where(x => x.IsDelete == false) as IQueryable<Positions>;
@@ -33,11 +33,11 @@ namespace Chunya5.Controllers
                 positions = positions
                     .Where(x => (x.Account.Contains(account)));
             }
-            if (!string.IsNullOrEmpty(tradeDate.ToString()))
-            {
+            if (tradeDate.Year != 1)
+            { 
                 ViewBag.date = tradeDate;
                 positions = positions
-                    .Where(x => (x.TradeDate.ToString().Contains(tradeDate.ToString())));
+                    .Where(x => x.TradeDate.Year == tradeDate.Year && x.TradeDate.Month == tradeDate.Month && x.TradeDate.Day == tradeDate.Day);
             }
             if (page == 0) page = 1;
 

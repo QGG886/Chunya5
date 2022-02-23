@@ -8,19 +8,23 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\zeq88\\.nuget\\packages\\": {}
+    "C:\\Users\\1\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Work\\Chunya5\\Clearn\\Clearn.csproj",
+      "projectUniqueName": "C:\\Users\\1\\source\\repos\\Chunya5\\Clearn\\Clearn.csproj",
       "projectName": "Clearn",
-      "projectPath": "E:\\Work\\Chunya5\\Clearn\\Clearn.csproj",
-      "packagesPath": "C:\\Users\\zeq88\\.nuget\\packages\\",
-      "outputPath": "E:\\Work\\Chunya5\\Clearn\\obj\\",
+      "projectPath": "C:\\Users\\1\\source\\repos\\Chunya5\\Clearn\\Clearn.csproj",
+      "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\1\\source\\repos\\Chunya5\\Clearn\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\zeq88\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\1\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -63,7 +67,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

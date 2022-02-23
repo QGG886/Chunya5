@@ -13,9 +13,10 @@ namespace Chunya5.Models
 
         [ Display(Name = "更新时间")]
         [DisplayFormat(DataFormatString = "{0:yyyy年MM月dd日}")]
-        public DateTime UpdateTime { get; set; }
+        public DateTime UpdateTime { get; set; } = DateTime.Now;
 
-        [ Display(Name = "新增人")]
+
+        [Display(Name = "新增人")]
         public string AddMan { get; set; } = "";
 
         [ Display(Name = "修改人")]
