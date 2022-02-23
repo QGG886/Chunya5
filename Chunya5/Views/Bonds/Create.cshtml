@@ -1,68 +1,64 @@
 ﻿@model Chunya5.Models.Bonds
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "aa";
 }
 
-<h1>创建债券</h1>
+<h1>aa</h1>
 
+<h4>Bonds</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" class="form-inline">
-            <div class="form-row">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group mb-3">
-                    <label asp-for="BondsCode" class="control-label"></label>
-                    <input asp-for="BondsCode" class="form-control" />
-                    <span asp-validation-for="BondsCode" class="text-danger"></span>
-                </div>
-                <div class="form-group mb-3">
-                    <label asp-for="BondsName" class="control-label"></label>
-                    <input asp-for="BondsName" class="form-control" />
-                    <span asp-validation-for="BondsName" class="text-danger"></span>
-                </div>
-                <div class="form-group mb-3">
-                    <label asp-for="Market" class="control-label"></label>
-                    <input asp-for="Market" class="form-control" />
-                    <span asp-validation-for="Market" class="text-danger"></span>
-                </div>
-                <div class="form-group mb-3">
-                    <label asp-for="ParValue" class="control-label"></label>
-                    <input asp-for="ParValue" disabled="disabled" value="100" class="form-control" />
-                    <span asp-validation-for="ParValue" class="text-danger"></span>
-                </div>
-                <div class="form-group mb-3">
-                    <label asp-for="Rate" class="control-label"></label>
-                    <div class="input-group mb-3">
-                        <input asp-for="Rate" type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <span class="input-group-text" id="basic-addon2">%</span>
-                        </div>
+        <form asp-action="aa">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="BondsCode" class="control-label"></label>
+                <input asp-for="BondsCode" class="form-control" />
+                <span asp-validation-for="BondsCode" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="BondsName" class="control-label"></label>
+                <input asp-for="BondsName" class="form-control" />
+                <span asp-validation-for="BondsName" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Market" class="control-label"></label>
+                <input asp-for="Market" class="form-control" />
+                <span asp-validation-for="Market" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="ParValue" class="control-label"></label>
+                <input asp-for="ParValue" class="form-control" />
+                <span asp-validation-for="ParValue" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Rate" class="control-label"></label>
+                <div class="input-group mb-3">
+                    <input asp-for="Rate" type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">%</span>
                     </div>
-                    <span asp-validation-for="Rate" class="text-danger"></span>
                 </div>
+                <span asp-validation-for="Rate" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input id="startTime" onblur="calculateTerm()" asp-for="StartDate" type="date" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
 
-
-                <div class="form-group mb-3">
-                    <label asp-for="StartDate" class="control-label"></label>
-                    <input id="startTime" onblur="calculateTerm()" asp-for="StartDate" type="date" class="form-control" />
-                    <span asp-validation-for="StartDate" class="text-danger"></span>
-                </div>
-                <div class="form-group mb-3">
-                    <label asp-for="Term" class="control-label"></label>
-                    <input id="term" onblur="calculateTerm()" asp-for="Term" class="form-control" />
-                    <span asp-validation-for="Term" class="text-danger"></span>
-                </div>
-                <div class="form-group mb-3">
-                    <label asp-for="EndDate" class="control-label"></label>
-                    <input id="endTime" asp-for="EndDate" type="date" class="form-control" />
-                    <span asp-validation-for="EndDate" class="text-danger"></span>
-                </div>
-
-
-
-                <div class="form-group mb-3">
+            <div class="form-group mb-3">
+                <label asp-for="Term" class="control-label"></label>
+                <input id="term" onblur="calculateTerm()" asp-for="Term" class="form-control" />
+                <span asp-validation-for="Term" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input id="endTime" asp-for="EndDate" type="date" class="form-control" disabled />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
                     <label asp-for="Frequency" class="control-label"></label>
                     <select asp-for="Frequency" class="form-control" disabled="disabled">
                         <option value="nianfu" selected="selected">年付</option>
@@ -74,8 +70,6 @@
                 <div class="form-group mb-3">
                     <input type="submit" value="创建" class="btn btn-primary" />
                 </div>
-            </div>
-
         </form>
     </div>
 </div>
@@ -83,6 +77,7 @@
 <div>
     <a asp-action="Index">返回列表</a>
 </div>
+
 <script>
     Date.prototype.Format = function (fmt) { //author: meizz
     var o = {

@@ -326,6 +326,14 @@ namespace Chunya5.Servers
                     firstPosition.TotalInterestIncome = firstPosition.AccUninterestImcome;
                     firstPosition.TradingProloss = 0;
                     firstPosition.DenominattonHeld = tradeItem.Deno;
+
+                    //计算浮动盈亏
+                    List<AssessmentPrace> assessmentPrace = _context.AssessmentPraces.Where(x => x.BondsCode == firstPosition.BondsCode && x.AssessmentPraceDate.Year == firstPosition.TradeDate.Year && x.AssessmentPraceDate.Month == firstPosition.TradeDate.Month && x.AssessmentPraceDate.Day == firstPosition.TradeDate.Day).ToList();
+                    if (assessmentPrace.Count != 0)
+                    {
+                        firstPosition.FloatingPl = firstPosition.DenominattonHeld * assessmentPrace[0].Prace -firstPosition.NetCost;
+                    }
+
                     positionList.Add(firstPosition);
                 }
                 //持仓表中有持仓数据，而合并后交易条目无
@@ -355,6 +363,14 @@ namespace Chunya5.Servers
                     firstPosition.TotalInterestIncome = firstPosition.AccUninterestImcome + firstPosition.RealizedInterestIncome;
                     firstPosition.TradingProloss = tempPositions.TradingProloss;
                     firstPosition.DenominattonHeld = tempPositions.DenominattonHeld;
+
+                    //计算浮动盈亏
+                    List<AssessmentPrace> assessmentPrace = _context.AssessmentPraces.Where(x => x.BondsCode == firstPosition.BondsCode && x.AssessmentPraceDate.Year == firstPosition.TradeDate.Year && x.AssessmentPraceDate.Month == firstPosition.TradeDate.Month && x.AssessmentPraceDate.Day == firstPosition.TradeDate.Day).ToList();
+                    if (assessmentPrace.Count != 0)
+                    {
+                        firstPosition.FloatingPl = firstPosition.DenominattonHeld * assessmentPrace[0].Prace - firstPosition.NetCost;
+                    }
+
                     positionList.Add(firstPosition);
                 }
                 // 持仓表中有持仓数据，而合并后交易条目有买方向数据
@@ -385,6 +401,14 @@ namespace Chunya5.Servers
                         firstPosition.RealizedInterestIncome = tempPositions.RealizedInterestIncome;
                         firstPosition.TotalInterestIncome = firstPosition.AccUninterestImcome + firstPosition.RealizedInterestIncome;
                         firstPosition.TradingProloss = tempPositions.TradingProloss;
+
+                        //计算浮动盈亏
+                        List<AssessmentPrace> assessmentPrace = _context.AssessmentPraces.Where(x => x.BondsCode == firstPosition.BondsCode && x.AssessmentPraceDate.Year == firstPosition.TradeDate.Year && x.AssessmentPraceDate.Month == firstPosition.TradeDate.Month && x.AssessmentPraceDate.Day == firstPosition.TradeDate.Day).ToList();
+                        if (assessmentPrace.Count != 0)
+                        {
+                            firstPosition.FloatingPl = firstPosition.DenominattonHeld * assessmentPrace[0].Prace - firstPosition.NetCost;
+                        }
+
                         positionList.Add(firstPosition);
                     }
                     else
@@ -411,6 +435,14 @@ namespace Chunya5.Servers
                         firstPosition.RealizedInterestIncome = tempPositions.RealizedInterestIncome +tempTrade.Accrued -tempPositions.InterestCost/tempPositions.DenominattonHeld *tempTrade.Deno;
                         firstPosition.TotalInterestIncome = firstPosition.AccUninterestImcome + firstPosition.RealizedInterestIncome;
                         firstPosition.TradingProloss = tempPositions.TradingProloss + tempTrade.NetPrace *tempTrade.Deno - tempPositions.NetCost/ tempPositions.DenominattonHeld*tempTrade.Deno;
+
+                        //计算浮动盈亏
+                        List<AssessmentPrace> assessmentPrace = _context.AssessmentPraces.Where(x => x.BondsCode == firstPosition.BondsCode && x.AssessmentPraceDate.Year == firstPosition.TradeDate.Year && x.AssessmentPraceDate.Month == firstPosition.TradeDate.Month && x.AssessmentPraceDate.Day == firstPosition.TradeDate.Day).ToList();
+                        if (assessmentPrace.Count != 0)
+                        {
+                            firstPosition.FloatingPl = firstPosition.DenominattonHeld * assessmentPrace[0].Prace - firstPosition.NetCost;
+                        }
+
                         positionList.Add(firstPosition);
 
                     }
@@ -528,6 +560,14 @@ namespace Chunya5.Servers
                 firstPosition.TotalInterestIncome = firstPosition.AccUninterestImcome;
                 firstPosition.TradingProloss = 0;
                 firstPosition.DenominattonHeld = tradeItem.Deno;
+
+                //计算浮动盈亏
+                List<AssessmentPrace> assessmentPrace = _context.AssessmentPraces.Where(x => x.BondsCode == firstPosition.BondsCode && x.AssessmentPraceDate.Year == firstPosition.TradeDate.Year && x.AssessmentPraceDate.Month == firstPosition.TradeDate.Month && x.AssessmentPraceDate.Day == firstPosition.TradeDate.Day).ToList();
+                if (assessmentPrace.Count != 0)
+                {
+                    firstPosition.FloatingPl = firstPosition.DenominattonHeld * assessmentPrace[0].Prace - firstPosition.NetCost;
+                }
+
                 positionList.Add(firstPosition);
 
             }
@@ -535,6 +575,8 @@ namespace Chunya5.Servers
             _context.SaveChanges();
             return true;
         }
+
+ 
     }
 }
 

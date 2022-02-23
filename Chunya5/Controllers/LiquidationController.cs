@@ -28,27 +28,41 @@ namespace Chunya5.Controllers
             //positions
             Boolean dateAvailable;
 
-            DateTime recentlyOpenDate= liquidationServer.SearchRecentlyOpenDate(account, liDate,out dateAvailable);
+            DateTime recentlyOpenDate = liquidationServer.SearchRecentlyOpenDate(account, liDate,out dateAvailable);
+            
+            ViewBag.liDate = liDate.ToLongDateString();
+            Boolean isCal = true;
             if (dateAvailable == false)
             {
-                liquidationServer.FirstCalculatePositions(account, liDate,out recentlyOpenDate);
+                //未查询到持仓记录
+                isCal= liquidationServer.FirstCalculatePositions(account, liDate,out recentlyOpenDate);
+                ViewBag.firstCalDate = recentlyOpenDate.ToLongDateString();
             }
-            while (liquidationServer.CalculateDays(recentlyOpenDate, liDate) < 0)
+            else
             {
-                recentlyOpenDate=recentlyOpenDate.AddDays(1);
-                liquidationServer.CalulatePosition(account, recentlyOpenDate);
-
+                ViewBag.firstCalDate = recentlyOpenDate.ToLongDateString();
             }
+            if (isCal)
+            {
+                while (liquidationServer.CalculateDays(recentlyOpenDate, liDate) < 0)
+                {
+                    recentlyOpenDate = recentlyOpenDate.AddDays(1);
+                    liquidationServer.CalulatePosition(account, recentlyOpenDate);
+
+                }
+            }
+            
             List<Positions> positions = _context.Positions.Where(x => x.IsDelete == false &&x.Account == account &&x.TradeDate ==liDate).ToList();
 
 
 
             var moneyFlows = _context.MoneyFlows.ToList();
-
+            ViewBag.IsCal = isCal;
             var model = new LiquidationViewModel()
             {
                 Account = account,
                 Positions= positions,
+                
                 //Positions = await PageList<Positions>.CreatPageListAsync(positions, page, pageSize),
                 TradeProfit = 0,
                 InterestProfit = 0,

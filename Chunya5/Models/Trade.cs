@@ -9,23 +9,25 @@ namespace Chunya5.Models
 
         public bool IsDelete { get; set; } = false;
 
-        [Required,Display(Name ="交易账户")]
+        [Required(ErrorMessage ="交易账户不能为空"),Display(Name ="交易账户")]
         public string Account { get; set; } = "";
 
-        [Required, Display(Name = "债权编码")]
-        [Remote("CheckBonds", "Trades", ErrorMessage = "该债券不存在")]
+        [Required(ErrorMessage = "债券代码不能为空"), Display(Name = "债权编码")]
+        
         public string BondsCode { get; set; } = "";
         //public Bonds Bonds { get; set; }
 
-        [Required, Display(Name = "交易时间")]
+        [Required(ErrorMessage = "交易时间不能为空"), Display(Name = "交易时间")]
         [DisplayFormat(DataFormatString = "{0:yyyy年MM月dd日}")]
+
         public DateTime TradeDate { get; set; }
 
         //交易方向（买或卖）
         [Required, Display(Name = "交易方式")]
         public string Direction { get; set; } = "";
         //交易面额
-        [Required, Display(Name = "交易面额")]
+        [Required(ErrorMessage = "交易面额不能为空"), Display(Name = "交易面额")]
+        [Range(-1000,10000000,ErrorMessage ="范围不正确")]
         public decimal Deno { get; set; }
         //净价
         [Required, Display(Name = "净价")]

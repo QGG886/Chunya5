@@ -75,8 +75,13 @@ namespace Chunya5.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(trade);
-                
+                var bonds = _context.Bonds.FirstOrDefault(x=>x.BondsCode == trade.BondsCode && x.IsDelete == false);
+                if(bonds != null)
+                {
+                    _context.Add(trade);
+
+                }
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

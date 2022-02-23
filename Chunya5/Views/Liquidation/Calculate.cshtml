@@ -1,130 +1,134 @@
 ﻿@model LiquidationViewModel
 @{
     ViewData["Title"] = "Calculate";
-    }
+}
 
 <h1>@Model.Account 的持仓信息</h1>
 
+@{
+    if (ViewBag.isCal == true)
+    {
+        <h3>清算完成，清算了 @Model.Account 在 @ViewBag.firstCalDate - @ViewBag.liDate 的持仓信息</h3>
+        <table class="table table-hover" style="width:1300px;position:fixed;left:110px">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Positions[0].Account)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Positions[0].BondsCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Positions[0].TradeDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Positions[0].NetCost)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Positions[0].InterestCost)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Positions[0].AccInterest)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Positions[0].AccUninterestImcome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Positions[0].RealizedInterestIncome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Positions[0].TotalInterestIncome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Positions[0].TradingProloss)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Positions[0].FloatingPl)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Positions[0].DenominattonHeld)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Positions)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Account)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BondsCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TradeDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NetCost)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InterestCost)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccInterest)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccUninterestImcome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RealizedInterestIncome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalInterestIncome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TradingProloss)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FloatingPl)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DenominattonHeld)
+                        </td>
+                    </tr>
+                }
+                <tr  class="table-primary">
+                    <td>
+                        合计
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        @Model.Positions.Sum(x=>x.TotalInterestIncome).ToString("0.00")
+                    </td>
+                    <td>
+                         @Model.Positions.Sum(x=>x.TradingProloss).ToString("0.00")
+                    </td>
+                    <td>
+                         @Model.Positions.Sum(x=>x.FloatingPl).ToString("0.00")
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h1>该账户该日期下无清算记录</h1>
+    }
+}
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Positions[0].Account)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Positions[0].BondsCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Positions[0].TradeDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Positions[0].NetCost)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Positions[0].InterestCost)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Positions[0].AccInterest)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Positions[0].AccUninterestImcome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Positions[0].RealizedInterestIncome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Positions[0].TotalInterestIncome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Positions[0].TradingProloss)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Positions[0].FloatingPl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Positions[0].DenominattonHeld)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Positions)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Account)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BondsCode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TradeDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NetCost)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.InterestCost)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AccInterest)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AccUninterestImcome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RealizedInterestIncome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TotalInterestIncome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TradingProloss)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FloatingPl)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DenominattonHeld)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-@*<nav style="float:right;">
-    <ul class="pagination">
-        <li class="page-item">
-            <a class="page-link"
-               asp-action="index"
-               asp-route-page=@(Model.Positions.CurrentPage-1)
-               asp-route-account=@ViewBag.account
-               asp-route-date=@ViewBag.date aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        @for (var i = 0; i < Model.Positions.TotalPages; i++)
-        {
-            <li class="page-item">
-                <a class="page-link"
-               asp-action="index"
-               asp-route-page=@(i+1)
-               asp-route-account=@ViewBag.account
-               asp-route-date=@ViewBag.date>@(i+1)</a>
-            </li>
-        }
-        <li class="page-item">
-            <a class="page-link"
-               asp-action="index"
-               asp-route-page=@(Model.Positions.CurrentPage+1)
-               asp-route-account=@ViewBag.account
-               asp-route-date=@ViewBag.date aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-</nav>*@

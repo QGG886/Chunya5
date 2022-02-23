@@ -14,10 +14,10 @@
         <div class="input-group mb-3" style="width:500px">
             <input type="text" class="form-control" placeholder="请输入账户" name="account" id="tradeAccount">
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="date" class="form-control" placeholder="请输入时间"  name="tradeDate" id="tradeDate">
+            <input type="date" class="form-control" placeholder="请输入时间" name="tradeDate" id="tradeDate">
             &nbsp;&nbsp;&nbsp;&nbsp;
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary"  type="submit">搜索</button>
+                <button class="btn btn-outline-secondary" type="submit">搜索</button>
             </div>
 
         </div>
@@ -25,7 +25,7 @@
 </div>
 
 
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
             <th>
@@ -107,12 +107,13 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.DenominattonHeld)
                 </td>
-               @* <td>
+                @* <td>
                     <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>
                     <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                </td>*@
+                    </td>*@
             </tr>
         }
+        
     </tbody>
 </table>
 <nav style="float:right;">

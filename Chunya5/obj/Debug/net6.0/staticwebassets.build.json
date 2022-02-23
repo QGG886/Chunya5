@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3oAAdOZErdAWNi/Ur6FF5vdEaRWMQXAIJjNTGBio48k=",
+  "Hash": "tSblY3BMq+ewOA38dOETrrXxf48b5KHOVIOOqYcYb1A=",
   "Source": "Chunya5",
   "BasePath": "_content/Chunya5",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Chunya5\\wwwroot",
       "Source": "Chunya5",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Chunya5.styles.css",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Chunya5.styles.css",
       "SourceId": "Chunya5",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "Chunya5.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Chunya5.styles.css"
+      "OriginalItemSpec": "E:\\Work\\Chunya5\\Chunya5\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Chunya5.styles.css"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Chunya5.bundle.scp.css",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Chunya5.bundle.scp.css",
       "SourceId": "Chunya5",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "Chunya5.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Chunya5.bundle.scp.css"
+      "OriginalItemSpec": "E:\\Work\\Chunya5\\Chunya5\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Chunya5.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\css\\bootstrap.css",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\css\\bootstrap.css",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "css/bootstrap.css",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap.css"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\css\\login.css",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\css\\login.css",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "css/login.css",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\css\\login.css"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\css\\site.css",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\css\\site.css",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\favicon.ico",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\favicon.ico",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\img\\logo.png",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\img\\logo.png",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "img/logo.png",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\img\\logo.png"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\img\\logo5.jpg",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\img\\logo5.jpg",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "img/logo5.jpg",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\img\\logo5.jpg"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\js\\bootstrap.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\js\\bootstrap.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "js/bootstrap.js",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\js\\bootstrap.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\js\\jquery.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\js\\jquery.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "js/jquery.js",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\js\\jquery.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\js\\site.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\js\\site.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap.css",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap.css",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap.css.map",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap.css.map",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap.min.css",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap.min.css",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap.min.css.map",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap.min.css.map",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -272,10 +272,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-grid.css",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-grid.css",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -289,10 +289,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-grid.css.map",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-grid.css.map",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -306,10 +306,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-grid.min.css",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-grid.min.css",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -323,10 +323,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-reboot.css",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-reboot.css",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -357,10 +357,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -374,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -391,10 +391,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -408,10 +408,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.bundle.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.bundle.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -425,10 +425,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -442,10 +442,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -459,10 +459,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -476,10 +476,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -493,10 +493,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.js.map",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.js.map",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -510,10 +510,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.min.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.min.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -527,10 +527,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.min.js.map",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.min.js.map",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/bootstrap-4.6.1-dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -544,10 +544,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-4.6.1-dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -561,10 +561,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -578,10 +578,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -595,10 +595,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\jquery.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\jquery.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery/jquery.js",
       "AssetKind": "All",
@@ -612,10 +612,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\jquery.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\jquery.min.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\jquery.min.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery/jquery.min.js",
       "AssetKind": "All",
@@ -629,10 +629,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\jquery.min.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\jquery.min.map",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\jquery.min.map",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery/jquery.min.map",
       "AssetKind": "All",
@@ -646,10 +646,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\jquery.min.map"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\jquery.slim.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\jquery.slim.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery/jquery.slim.js",
       "AssetKind": "All",
@@ -663,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\jquery.slim.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\jquery.slim.min.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\jquery.slim.min.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery/jquery.slim.min.js",
       "AssetKind": "All",
@@ -680,10 +680,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\jquery.slim.min.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\jquery.slim.min.map",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\jquery.slim.min.map",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery/jquery.slim.min.map",
       "AssetKind": "All",
@@ -697,10 +697,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\jquery.slim.min.map"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -714,10 +714,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -731,10 +731,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -748,10 +748,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -765,10 +765,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -782,10 +782,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -799,10 +799,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -816,10 +816,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -833,10 +833,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "Chunya5",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\1\\source\\repos\\Chunya5\\Chunya5\\wwwroot\\",
+      "ContentRoot": "E:\\Work\\Chunya5\\Chunya5\\wwwroot\\",
       "BasePath": "_content/Chunya5",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",

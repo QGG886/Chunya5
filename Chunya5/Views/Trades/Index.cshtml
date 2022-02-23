@@ -21,7 +21,7 @@
         <a asp-action="Create" class="btn btn-primary">添加交易记录</a>
     </p>
 </div>
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
             <th>
@@ -79,7 +79,7 @@
                 @Html.DisplayFor(modelItem => item.Amount)
             </td>
             <td>
-                <a asp-action="Edit" class="btn btn-info"  asp-route-id="@item.Id">编辑</a> 
+                <a asp-action="Edit" class="btn btn-info"  asp-route-id="@item.Id"  style="background-color:rgb(45,140,240);color:#fff;">编辑</a> 
                 <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">删除</a>
             </td>
         </tr>
